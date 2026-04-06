@@ -1,0 +1,10 @@
+.vs/
+bin/
+obj/
+packages/
+LinqToDB.Templates/
+*.user
+*.suo
+*.dll
+*.exe
+*.nupkg
