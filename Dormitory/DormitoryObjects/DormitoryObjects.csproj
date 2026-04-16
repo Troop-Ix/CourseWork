@@ -61,20 +61,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Databases\MSDormitoryDatabase.cs" />
     <Compile Include="Entities\BenefitType.cs" />
     <Compile Include="Entities\Inventory.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\Room.cs" />
-    <Compile Include="MSRepositories\MSAdministratorRepository.cs" />
-    <Compile Include="MSRepositories\MSCommandantRepository.cs" />
-    <Compile Include="MSRepositories\MSRepository.cs" />
+    <Compile Include="MSRepositories\MSBenefitTypeRepository.cs" />
+    <Compile Include="MSRepositories\MSInventoryRepository.cs" />
+    <Compile Include="MSRepositories\MSPaymentRepository.cs" />
+    <Compile Include="MSRepositories\MSRoomAdvancedRepository.cs" />
+    <Compile Include="MSRepositories\MSRoomRepository.cs" />
+    <Compile Include="MSRepositories\MSStudentAdvancedRepository.cs" />
+    <Compile Include="MSRepositories\MSStudentBenefitRepository.cs" />
+    <Compile Include="MSRepositories\MSStudentRepository.cs" />
+    <Compile Include="MSRepositories\MSUserAdvancedRepository.cs" />
+    <Compile Include="MSRepositories\MSUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\StudentBenefit.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Repositories\IAdministratorRepository.cs" />
-    <Compile Include="Repositories\ICommandantRepository.cs" />
-    <Compile Include="Repositories\IGeneralRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IRoomAdvancedRepository.cs" />
+    <Compile Include="Repositories\IStudentAdvancedRepository.cs" />
+    <Compile Include="Repositories\IUserAdvancedRepository.cs" />
+    <Compile Include="Services\AdministratorService.cs" />
+    <Compile Include="Services\CommandantService.cs" />
+    <Compile Include="Services\GeneralService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
