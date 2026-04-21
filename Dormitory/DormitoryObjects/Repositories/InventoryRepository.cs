@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSInventoryRepository : IRepository<Inventory>
+    public class InventoryRepository : IRepository<Inventory>
     {
-        protected readonly MSDormitoryDatabase _db;
+        protected readonly IDormitoryDatabase _db;
 
-        public MSInventoryRepository(MSDormitoryDatabase db)
+        public InventoryRepository(IDormitoryDatabase db)
         {
             _db = db;
         }
@@ -40,10 +40,14 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(Inventory item, int id)
         {
-            if (item != null)
+            var oldItem = await GetById(id);
+            if (oldItem != null)
             {
-                item.ItemID = id;
-                await _db.UpdateAsync(item);
+                oldItem.Name = item.Name;
+                oldItem.Condition = item.Condition;
+                oldItem.RoomID = item.RoomID;
+                oldItem.PurchaseDate = item.PurchaseDate;
+                await _db.UpdateAsync(oldItem);
             }
         }
 

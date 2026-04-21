@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSPaymentRepository : IRepository<Payment>
+    public class PaymentRepository : IRepository<Payment>
     {
-        protected readonly MSDormitoryDatabase _db;
+        protected readonly IDormitoryDatabase _db;
 
-        public MSPaymentRepository(MSDormitoryDatabase db)
+        public PaymentRepository(IDormitoryDatabase db)
         {
             _db = db;
         }
@@ -40,10 +40,15 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(Payment payment, int id)
         {
-            if (payment != null)
+            var oldPayment = await GetById(id);
+            if (oldPayment != null)
             {
-                payment.PaymentID = id;
-                await _db.UpdateAsync(payment);
+                oldPayment.StudentID = payment.StudentID;
+                oldPayment.AmountDue = payment.AmountDue;
+                oldPayment.PaidAmount = payment.PaidAmount;
+                oldPayment.PaymentItem = payment.PaymentItem;
+                oldPayment.LastPaymentDate = payment.LastPaymentDate;
+                await _db.UpdateAsync(oldPayment);
             }
         }
 

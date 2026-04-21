@@ -61,32 +61,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Databases\DatabaseType.cs" />
+    <Compile Include="Databases\IDormitoryDatabase.cs" />
     <Compile Include="Databases\MSDormitoryDatabase.cs" />
     <Compile Include="Entities\BenefitType.cs" />
     <Compile Include="Entities\Inventory.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\Room.cs" />
-    <Compile Include="MSRepositories\MSBenefitTypeRepository.cs" />
-    <Compile Include="MSRepositories\MSInventoryRepository.cs" />
-    <Compile Include="MSRepositories\MSPaymentRepository.cs" />
-    <Compile Include="MSRepositories\MSRoomAdvancedRepository.cs" />
-    <Compile Include="MSRepositories\MSRoomRepository.cs" />
-    <Compile Include="MSRepositories\MSStudentAdvancedRepository.cs" />
-    <Compile Include="MSRepositories\MSStudentBenefitRepository.cs" />
-    <Compile Include="MSRepositories\MSStudentRepository.cs" />
-    <Compile Include="MSRepositories\MSUserAdvancedRepository.cs" />
-    <Compile Include="MSRepositories\MSUserRepository.cs" />
+    <Compile Include="Fabrics\DbFactory.cs" />
+    <Compile Include="Fabrics\IDbFactorye1.cs" />
+    <Compile Include="Repositories\BenefitTypeRepository.cs" />
+    <Compile Include="Repositories\InventoryRepository.cs" />
+    <Compile Include="Repositories\PaymentRepository.cs" />
+    <Compile Include="Repositories\RoomAdvancedRepository.cs" />
+    <Compile Include="Repositories\RoomRepository.cs" />
+    <Compile Include="Repositories\StudentAdvancedRepository.cs" />
+    <Compile Include="Repositories\StudentBenefitRepository.cs" />
+    <Compile Include="Repositories\StudentRepository.cs" />
+    <Compile Include="Repositories\UserAdvancedRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\StudentBenefit.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRoomAdvancedRepository.cs" />
-    <Compile Include="Repositories\IStudentAdvancedRepository.cs" />
-    <Compile Include="Repositories\IUserAdvancedRepository.cs" />
-    <Compile Include="Services\AdministratorService.cs" />
-    <Compile Include="Services\CommandantService.cs" />
-    <Compile Include="Services\GeneralService.cs" />
+    <Compile Include="RepositoriesInterfaces\IRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\IRoomAdvancedRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\IStudentAdvancedRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\IUserAdvancedRepository.cs" />
+    <Compile Include="Services\BenefitTypeService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\PaymentService.cs" />
+    <Compile Include="Services\RoomService.cs" />
+    <Compile Include="Services\StudentBenefitService.cs" />
+    <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />

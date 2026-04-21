@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSStudentAdvancedRepository : MSStudentRepository, IStudentAdvancedRepository
+    public class StudentAdvancedRepository : StudentRepository, IStudentAdvancedRepository
     {
-        public MSStudentAdvancedRepository(MSDormitoryDatabase db) : base(db) { }
+        public StudentAdvancedRepository(IDormitoryDatabase db) : base(db) { }
 
         public async Task<IEnumerable<Student>> GetStudentsBySurname(string surname)
         {

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSStudentRepository : IRepository<Student>
+    public class StudentRepository : IRepository<Student>
     {
-        protected readonly MSDormitoryDatabase _db;
+        protected readonly IDormitoryDatabase _db;
 
-        public MSStudentRepository(MSDormitoryDatabase db)
+        public StudentRepository(IDormitoryDatabase db)
         {
             _db = db;
         }
@@ -40,10 +40,18 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(Student student, int id)
         {
-            if (student != null)
+            var oldStudent = await GetById(id);
+            if (oldStudent != null)
             {
-                student.StudentID = id;
-                await _db.UpdateAsync(student);
+                oldStudent.Name = student.Name;
+                oldStudent.Surname = student.Surname;
+                oldStudent.Middlename = student.Middlename;
+                oldStudent.Birthdate = student.Birthdate;
+                oldStudent.PhoneNumber = student.PhoneNumber;
+                oldStudent.Faculty = student.Faculty;
+                oldStudent.Group = student.Group;
+                oldStudent.RoomID = student.RoomID;
+                await _db.UpdateAsync(oldStudent);
             }
         }
 

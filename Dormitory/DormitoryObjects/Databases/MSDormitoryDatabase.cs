@@ -8,41 +8,9 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.Databases
 {
-    public class MSDormitoryDatabase : DataConnection
+    public class MSDormitoryDatabase : DataConnection, IDormitoryDatabase
     {
-        private static MSDormitoryDatabase _instance;
-        private readonly static object _lock = new object();
-        private MSDormitoryDatabase(string connectionString)
-             : base(new DataOptions().UseSqlServer(connectionString))
-        {
-        }
-
-        public static MSDormitoryDatabase GetInstance(string connectionString = null)
-        {
-            lock (_lock)
-            {
-                if (_instance == null)
-                {
-                    if (string.IsNullOrEmpty(connectionString))
-                        throw new ArgumentNullException(nameof(connectionString), "Connection string required for first initialization");
-
-                    _instance = new MSDormitoryDatabase(connectionString);
-                }
-                return _instance;
-            }
-        }
-        public async Task<bool> TestConnection()
-        {
-            try
-            {
-                await this.ExecuteAsync<int>("SELECT 1");
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        public MSDormitoryDatabase(string connectionString) : base(new DataOptions().UseSqlServer(connectionString)) { }
 
         public ITable<Room> Rooms => this.GetTable<Room>();
         public ITable<Student> Students => this.GetTable<Student>();
@@ -51,5 +19,9 @@ namespace DormitoryObjects.Databases
         public ITable<BenefitType> BenefitTypes => this.GetTable<BenefitType>();
         public ITable<StudentBenefit> StudentBenefits => this.GetTable<StudentBenefit>();
         public ITable<User> Users => this.GetTable<User>();
+
+        Task<int> IDormitoryDatabase.InsertAsync<T>(T entity) => this.InsertAsync(entity);
+        Task<int> IDormitoryDatabase.UpdateAsync<T>(T entity) => this.UpdateAsync(entity);
+        Task<int> IDormitoryDatabase.DeleteAsync<T>(T entity) => this.DeleteAsync(entity);
     }
 }

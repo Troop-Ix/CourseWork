@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSUserAdvancedRepository : MSUserRepository, IUserAdvancedRepository
+    public class UserAdvancedRepository : UserRepository, IUserAdvancedRepository
     {
-        public MSUserAdvancedRepository(MSDormitoryDatabase db) : base(db) { }
+        public UserAdvancedRepository(IDormitoryDatabase db) : base(db) { }
 
         public async Task<User> GetByLogin(string login)
         {

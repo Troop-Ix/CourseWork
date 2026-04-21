@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.MSRepositories
 {
-    public class MSRoomAdvancedRepository : MSRoomRepository, IRoomAdvancedRepository
+    public class RoomAdvancedRepository : RoomRepository, IRoomAdvancedRepository
     {
-        public MSRoomAdvancedRepository(MSDormitoryDatabase db) : base(db) { }
+        public RoomAdvancedRepository(IDormitoryDatabase db) : base(db) { }
 
         public async Task<IEnumerable<Room>> FilterRoomByOccupancy(int roomsCount)
         {
