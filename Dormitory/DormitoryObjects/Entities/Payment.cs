@@ -1,4 +1,5 @@
-﻿using LinqToDB.Mapping;
+﻿using DormitoryObjects.Entities;
+using LinqToDB.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,11 @@ namespace DormitoryObjects
         [Column(Name = "СтудентID")]
         public int StudentID { get; set; }
         /// <summary>
+        /// ID предмета оплаты, описывающий предоставляемые услуги
+        /// </summary>
+        [Column(Name = "ПредметОплатыID")]
+        public int PaymentItemID { get; set; }
+        /// <summary>
         /// Сумма, внесенная для покрытия оплаты
         /// </summary>
         [Column(Name = "Внесено")]
@@ -33,11 +39,7 @@ namespace DormitoryObjects
         /// </summary>
         [Column(Name = "СуммаКОплате")]
         public decimal AmountDue { get; set; }
-        /// <summary>
-        /// Предмет оплаты, описывающий предоставленные услуги
-        /// </summary>
-        [Column(Name = "ПредметОплаты")]
-        public string PaymentItem { get; set; }
+
         /// <summary>
         /// Дата последний оплаты
         /// </summary>
@@ -49,5 +51,7 @@ namespace DormitoryObjects
         /// </summary>
         [Association(ThisKey = "StudentID", OtherKey = "StudentID", CanBeNull = false)]
         public Student Student { get; set; }
+        [Association(ThisKey = "PaymentItemID", OtherKey = "PaymentItemID", CanBeNull = false)]
+        public PaymentItem PaymentItem { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task<IEnumerable<Student>> GetStudentsBySurname(string surname)
         {
-            var students = await _db.Students.Where(s => s.Surname.Contains(surname)).ToListAsync();
+            var students = await _db.Students.Where(s => s.Surname.StartsWith(surname)).ToListAsync();
             return students;
         }
         public async Task<IEnumerable<Student>> GetDebtors()

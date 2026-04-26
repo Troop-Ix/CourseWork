@@ -14,28 +14,21 @@ namespace DormitoryObjects.MSRepositories
     {
         public RoomAdvancedRepository(IDormitoryDatabase db) : base(db) { }
 
-        public async Task<IEnumerable<Room>> FilterRoomByOccupancy(int roomsCount)
+        public async Task<IEnumerable<Room>> FilterRoomByOccupancy(int studentsCount)
         {
-            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r => r.Students.Count == roomsCount).ToListAsync();
+            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r =>r.Capacity-r.Students.Count() == studentsCount).ToListAsync();
             return rooms;
         }
 
-        public async Task<IEnumerable<Room>> GetEmptyRooms()
+        public async Task<IEnumerable<Room>> GetRoomsFromFloor(int floor)
         {
-            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r => r.Students.Count == 0).ToListAsync();
+            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r => r.Floor == floor).ToListAsync();
             return rooms;
         }
-
-        public async Task<IEnumerable<Room>> GetFullRooms()
+        public async Task<IEnumerable<int>> GetFloors()
         {
-            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r => r.Students.Count == r.Capacity).ToListAsync();
-            return rooms;
-        }
-
-        public async Task<IEnumerable<Room>> GetPartlyOccupiedRooms()
-        {
-            var rooms = await _db.Rooms.LoadWith(r => r.Students).Where(r => r.Students.Count > 0 && r.Students.Count < r.Capacity).ToListAsync();
-            return rooms;
+            var floors = await _db.Rooms.Select(r => r.Floor).Distinct().ToListAsync();
+            return floors;
         }
     }
 }

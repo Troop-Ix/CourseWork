@@ -41,8 +41,10 @@ namespace LogInSystem
                 {
                     LoginInput.BackColor = Color.White;
                     PasswordInput.BackColor = Color.White;
-                    var form=GUIFabric.CreateUser(user);
+                    var form=GUIFabric.CreateUser(user, dbFactory);
+                    this.Hide();
                     form.ShowDialog();
+                    this.Close();
                 }
                 else
                 {

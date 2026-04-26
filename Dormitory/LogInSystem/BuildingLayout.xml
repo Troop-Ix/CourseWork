@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Building>
+	<FloorLayout Number="1">
+		<Room RoomID="1" X="20" Y="20" Width="100" Height="60" />
+		<Room RoomID="2" X="130" Y="20" Width="100" Height="60" />
+	</FloorLayout>
+
+	<FloorLayout Number="2">
+		<Room RoomID="10" X="20" Y="20" Width="100" Height="60" />
+		<Room RoomID="11" X="130" Y="20" Width="100" Height="60" />
+	</FloorLayout>
+</Building> 

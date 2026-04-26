@@ -20,7 +20,7 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<StudentBenefit>> GetAll()
         {
-            var studentBenefits = await _db.StudentBenefits.ToListAsync();
+            var studentBenefits = await _db.StudentBenefits.OrderBy(sb => sb.StudentBenefitID).ToListAsync();
             return studentBenefits;
         }
 

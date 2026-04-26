@@ -20,14 +20,13 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<Payment>> GetAll()
         {
-            var payments = await _db.Payments.ToListAsync();
+            var payments = await _db.Payments.LoadWith(p => p.PaymentItem).OrderBy(p => p.PaymentID).ToListAsync();
             return payments;
         }
 
         public async Task<Payment> GetById(int id)
         {
-            var payment = await _db.Payments.FirstOrDefaultAsync(p => p.PaymentID == id);
-            return payment;
+            return await _db.Payments.LoadWith(p => p.PaymentItem).FirstOrDefaultAsync(p => p.PaymentID == id);
         }
 
         public async Task Create(Payment payment)
@@ -46,7 +45,7 @@ namespace DormitoryObjects.MSRepositories
                 oldPayment.StudentID = payment.StudentID;
                 oldPayment.AmountDue = payment.AmountDue;
                 oldPayment.PaidAmount = payment.PaidAmount;
-                oldPayment.PaymentItem = payment.PaymentItem;
+                oldPayment.PaymentItemID = payment.PaymentItemID;
                 oldPayment.LastPaymentDate = payment.LastPaymentDate;
                 await _db.UpdateAsync(oldPayment);
             }

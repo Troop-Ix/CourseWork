@@ -23,14 +23,14 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
-        public async Task<bool> AddPayment(int studentID, decimal paidAmount, decimal amountDue, string paymentItem, DateTime? lastPaymentDate)
+        public async Task<bool> AddPayment(int studentID, decimal paidAmount, decimal amountDue, int paymentItemID, DateTime? lastPaymentDate)
         {
             using (var db = _factory.Create())
             {
                 try
                 {
                     var repo = new PaymentRepository(db);
-                    var payment = new Payment { StudentID = studentID, PaidAmount = paidAmount, AmountDue = amountDue, PaymentItem = paymentItem, LastPaymentDate = lastPaymentDate };
+                    var payment = new Payment { StudentID = studentID, PaidAmount = paidAmount, AmountDue = amountDue, PaymentItemID=paymentItemID, LastPaymentDate = lastPaymentDate };
                     await repo.Create(payment);
                     return true;
                 }

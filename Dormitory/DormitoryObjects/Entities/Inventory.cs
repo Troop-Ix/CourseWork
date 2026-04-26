@@ -1,4 +1,5 @@
 ﻿using DormitoryObjects;
+using DormitoryObjects.Entities;
 using LinqToDB.Mapping;
 using System;
 using System.Collections.Generic;
@@ -23,18 +24,18 @@ namespace DormitoryObjects
         /// ID комнаты, к которой привязан предмет
         /// </summary>
         /// <value>Целое число или null (предмет может быть не привязан к какой-либо комнате)</value>
-        [Column(Name = "КомнатаID")]
+        [Column(Name = "КомнатаID", CanBeNull =true)]
         public int? RoomID { get; set; }
         /// <summary>
-        /// Наименование предмета
+        /// ID типа предмета, которым он является
         /// </summary>
-        [Column(Name = "Название")]
-        public string Name { get; set; }
+        [Column(Name = "ТипИнвентаряID")]
+        public int TypeID { get; set; }
         /// <summary>
-        /// Состояние предмета
+        /// ID состояние предмета
         /// </summary>
-        [Column(Name = "Состояние")]
-        public string Condition { get; set; }
+        [Column(Name = "СостояниеID")]
+        public int StateID { get; set; }
         /// <summary>
         /// Дата приобретения предмета
         /// </summary>
@@ -45,5 +46,15 @@ namespace DormitoryObjects
         /// </summary>
         [Association(ThisKey = "RoomID", OtherKey = "RoomID", CanBeNull = true)]
         public Room Room { get; set; }
+        /// <summary>
+        /// Объект типа предмета, которым он является
+        /// </summary>
+        [Association(ThisKey = "TypeID", OtherKey = "TypeID", CanBeNull = false)]
+        public InventoryTypes InventoryType { get; set; }
+        /// <summary>
+        /// Объект состояния предмета
+        /// </summary>
+        [Association(ThisKey = "StateID", OtherKey = "StateID", CanBeNull = false)]
+        public InventoryStates InventoryState { get; set; }
     }
 }

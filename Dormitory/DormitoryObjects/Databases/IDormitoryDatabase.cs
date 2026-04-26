@@ -4,6 +4,7 @@ using System.Linq;
 using LinqToDB;
 using System.Text;
 using System.Threading.Tasks;
+using DormitoryObjects.Entities;
 
 namespace DormitoryObjects.Databases
 {
@@ -25,9 +26,21 @@ namespace DormitoryObjects.Databases
         /// </summary>
         ITable<Payment> Payments { get; }
         /// <summary>
+        /// Свойство для работы с таблицей "Предметы оплаты"
+        /// </summary>
+        ITable<PaymentItem> PaymentItems { get; }
+        /// <summary>
         /// Свойство для работа с таблицей "Инвентарь"
         /// </summary>
         ITable<Inventory> Inventory { get; }
+        /// <summary>
+        /// Свойство для работы с таблицей "СостояниеИнвентаря"
+        /// </summary>
+        ITable<InventoryStates> InventoryStates { get; }
+        /// <summary>
+        /// Свойство для работы с таблицей "ТипыИнвентаря"
+        /// </summary>
+        ITable<InventoryTypes> InventoryTypes { get; }
         /// <summary>
         /// Свойство для работа с таблицей "ТипыЛьгот"
         /// </summary>

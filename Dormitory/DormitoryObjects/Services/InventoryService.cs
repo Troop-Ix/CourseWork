@@ -1,5 +1,7 @@
-﻿using DormitoryObjects.Fabrics;
+﻿using DormitoryObjects.Entities;
+using DormitoryObjects.Fabrics;
 using DormitoryObjects.MSRepositories;
+using DormitoryObjects.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +25,28 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
-        public async Task<bool> AddInventory(string name, string condition, DateTime purchaseDate)
+        public async Task<bool> AddInventory(int typeID, int stateID, DateTime purchaseDate)
         {
             using (var db = _factory.Create())
             {
                 try
                 {
                     var repo = new InventoryRepository(db);
-                    var item = new Inventory { RoomID = null, Name = name, Condition = condition, PurchaseDate = purchaseDate };
+                    var repoInventoryTypes = new InventoryTypeRepository(db);
+                    var repoInventoryStates = new InventoryStatesRepository(db);
+
+                    var type = await repoInventoryTypes.GetById(typeID);
+                    if(type == null)
+                    {
+                        return false;
+                    }
+                    var state = await repoInventoryStates.GetById(stateID);
+                    if(state == null)
+                    {
+                        return false;
+                    }
+
+                    var item = new Inventory { RoomID = null, TypeID=typeID, StateID = stateID, PurchaseDate = purchaseDate };
                     await repo.Create(item);
                     return true;
                 }
@@ -40,17 +56,24 @@ namespace DormitoryObjects.Services
                 }
             }
         }
-        public async Task<bool> UpdateInventoryCondition(int itemId, string condition)
+        public async Task<bool> UpdateInventoryCondition(int itemId, InventoryStateEnum newState)
         {
             using (var db = _factory.Create())
             {
                 try
                 {
                     var repo = new InventoryRepository(db);
+
                     var item = await repo.GetById(itemId);
                     if (item == null)
+                    { 
                         return false;
-                    item.Condition = condition;
+                    }
+                    if (newState == InventoryStateEnum.InStorage || newState == InventoryStateEnum.InRepair)
+                    {
+                        item.RoomID = null;
+                    }
+                    item.StateID = (int)newState;
                     await repo.Update(item, itemId);
                     return true;
                 }
@@ -95,6 +118,10 @@ namespace DormitoryObjects.Services
                     {
                         return false;
                     }
+                    if (inventory.StateID == (int)InventoryStateEnum.InRepair)
+                    {
+                        return false;
+                    }
                     inventory.RoomID = roomId;
                     await repo.Update(inventory, itemId);
                     return true;
@@ -119,6 +146,7 @@ namespace DormitoryObjects.Services
                         return false;
                     }
                     inventory.RoomID = null;
+                    inventory.StateID = (int)InventoryStateEnum.InStorage;
                     await repo.Update(inventory, itemId);
                     return true;
                 }

@@ -47,29 +47,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministratorForm.cs">
+    <Compile Include="HelpingForms\ShowRoomInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministratorForm.Designer.cs">
+    <Compile Include="HelpingForms\ShowRoomInfo.Designer.cs">
+      <DependentUpon>ShowRoomInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\AdministratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForms\AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommandantForm.cs">
+    <Compile Include="ControlPanels\BenefitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\BenefitControl.Designer.cs">
+      <DependentUpon>BenefitControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\CommandantForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CommandantForm.Designer.cs">
+    <Compile Include="MainForms\CommandantForm.Designer.cs">
       <DependentUpon>CommandantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Fabrics\GUIFabric.cs" />
-    <Compile Include="LogInSystem.cs">
+    <Compile Include="ControlPanels\FloorsPlans.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\FloorsPlans.Designer.cs">
+      <DependentUpon>FloorsPlans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanels\InventoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\InventoryControl.Designer.cs">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\LogInSystem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogInSystem.Designer.cs">
+    <Compile Include="MainForms\LogInSystem.Designer.cs">
       <DependentUpon>LogInSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanels\PaymentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\PaymentControl.Designer.cs">
+      <DependentUpon>PaymentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="LogInSystem.resx">
+    <Compile Include="ControlPanels\RoomControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\RoomControl.Designer.cs">
+      <DependentUpon>RoomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanels\StudentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlPanels\StudentControl.Designer.cs">
+      <DependentUpon>StudentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMLClassesForDrawing\BuildingLayout.cs" />
+    <Compile Include="XMLClassesForDrawing\FloorLayout.cs" />
+    <Compile Include="XMLClassesForDrawing\LayoutManager.cs" />
+    <Compile Include="XMLClassesForDrawing\RoomLayout.cs" />
+    <EmbeddedResource Include="ControlPanels\BenefitControl.resx">
+      <DependentUpon>BenefitControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\ShowRoomInfo.resx">
+      <DependentUpon>ShowRoomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\AdministratorForm.resx">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\CommandantForm.resx">
+      <DependentUpon>CommandantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlPanels\FloorsPlans.resx">
+      <DependentUpon>FloorsPlans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlPanels\InventoryControl.resx">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForms\LogInSystem.resx">
       <DependentUpon>LogInSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlPanels\PaymentControl.resx">
+      <DependentUpon>PaymentControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +147,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ControlPanels\RoomControl.resx">
+      <DependentUpon>RoomControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlPanels\StudentControl.resx">
+      <DependentUpon>StudentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,5 +172,6 @@
       <Name>DormitoryObjects</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

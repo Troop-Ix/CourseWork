@@ -20,7 +20,7 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<Room>> GetAll()
         {
-            var rooms = await _db.Rooms.ToListAsync();
+            var rooms = await _db.Rooms.OrderBy(r => r.RoomID).ToListAsync();
             return rooms;
         }
 

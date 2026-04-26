@@ -20,7 +20,7 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<User>> GetAll()
         {
-            var users = await _db.Users.ToListAsync();
+            var users = await _db.Users.OrderBy(u => u.UserID).ToListAsync();
             return users;
         }
 

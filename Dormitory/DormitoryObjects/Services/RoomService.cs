@@ -31,28 +31,20 @@ namespace DormitoryObjects.Services
                 return await repo.FilterRoomByOccupancy(roomsCount);
             }
         }
-        public async Task<IEnumerable<Room>> GetEmptyRooms()
+        public async Task<IEnumerable<int>> GetFloors()
         {
             using (var db = _factory.Create())
             {
                 var repo = new RoomAdvancedRepository(db);
-                return await repo.GetEmptyRooms();
+                return await repo.GetFloors();
             }
         }
-        public async Task<IEnumerable<Room>> GetFullRooms()
+        public async Task<IEnumerable<Room>> GetRoomsFromFloor(int floor)
         {
             using (var db = _factory.Create())
             {
                 var repo = new RoomAdvancedRepository(db);
-                return await repo.GetFullRooms();
-            }
-        }
-        public async Task<IEnumerable<Room>> GetPartlyOccupiedRooms()
-        {
-            using (var db = _factory.Create())
-            {
-                var repo = new RoomAdvancedRepository(db);
-                return await repo.GetPartlyOccupiedRooms();
+                return await repo.GetRoomsFromFloor(floor);
             }
         }
     }

@@ -20,14 +20,12 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<Inventory>> GetAll()
         {
-            var items = await _db.Inventory.ToListAsync();
-            return items;
+            return await _db.Inventory.LoadWith(i => i.InventoryState).LoadWith(i => i.InventoryType).LoadWith(i => i.Room).OrderBy(i => i.ItemID).ToListAsync();
         }
 
         public async Task<Inventory> GetById(int id)
         {
-            var item = await _db.Inventory.FirstOrDefaultAsync(i => i.ItemID == id);
-            return item;
+            return await _db.Inventory.LoadWith(i=>i.InventoryState).LoadWith(i=>i.InventoryType).LoadWith(i => i.Room).FirstOrDefaultAsync(i => i.ItemID == id);
         }
 
         public async Task Create(Inventory item)
@@ -43,8 +41,8 @@ namespace DormitoryObjects.MSRepositories
             var oldItem = await GetById(id);
             if (oldItem != null)
             {
-                oldItem.Name = item.Name;
-                oldItem.Condition = item.Condition;
+                oldItem.TypeID = item.TypeID;
+                oldItem.StateID = item.StateID;
                 oldItem.RoomID = item.RoomID;
                 oldItem.PurchaseDate = item.PurchaseDate;
                 await _db.UpdateAsync(oldItem);
