@@ -44,14 +44,14 @@ namespace LogInSystem
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SetItemForRoom = new System.Windows.Forms.Button();
+            this.RemoveItemFromRoom = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.SetItemForRoom = new System.Windows.Forms.Button();
-            this.RemoveItemFromRoom = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -184,13 +184,35 @@ namespace LogInSystem
             this.tabPage1.Text = "Инвентарь";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // SetItemForRoom
+            // 
+            this.SetItemForRoom.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SetItemForRoom.Location = new System.Drawing.Point(457, 660);
+            this.SetItemForRoom.Name = "SetItemForRoom";
+            this.SetItemForRoom.Size = new System.Drawing.Size(268, 44);
+            this.SetItemForRoom.TabIndex = 1;
+            this.SetItemForRoom.Text = "Назначить предмет на комнату";
+            this.SetItemForRoom.UseVisualStyleBackColor = true;
+            this.SetItemForRoom.Click += new System.EventHandler(this.SetItemForRoom_Click);
+            // 
+            // RemoveItemFromRoom
+            // 
+            this.RemoveItemFromRoom.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveItemFromRoom.Location = new System.Drawing.Point(813, 660);
+            this.RemoveItemFromRoom.Name = "RemoveItemFromRoom";
+            this.RemoveItemFromRoom.Size = new System.Drawing.Size(245, 44);
+            this.RemoveItemFromRoom.TabIndex = 2;
+            this.RemoveItemFromRoom.Text = "Убрать предмет из комнаты";
+            this.RemoveItemFromRoom.UseVisualStyleBackColor = true;
+            this.RemoveItemFromRoom.Click += new System.EventHandler(this.RemoveItemFromRoom_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1367, 684);
+            this.tabPage2.Size = new System.Drawing.Size(1367, 716);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Комнаты";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -200,7 +222,7 @@ namespace LogInSystem
             this.tabPage3.Controls.Add(this.panel2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1367, 684);
+            this.tabPage3.Size = new System.Drawing.Size(1367, 716);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Студенты";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -210,7 +232,7 @@ namespace LogInSystem
             this.tabPage4.Controls.Add(this.panel4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1367, 684);
+            this.tabPage4.Size = new System.Drawing.Size(1367, 716);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Оплаты";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -220,7 +242,7 @@ namespace LogInSystem
             this.tabPage5.Controls.Add(this.panel5);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1367, 684);
+            this.tabPage5.Size = new System.Drawing.Size(1367, 716);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Виды льгот";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -241,27 +263,6 @@ namespace LogInSystem
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(904, 557);
             this.panel8.TabIndex = 0;
-            // 
-            // SetItemForRoom
-            // 
-            this.SetItemForRoom.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SetItemForRoom.Location = new System.Drawing.Point(457, 660);
-            this.SetItemForRoom.Name = "SetItemForRoom";
-            this.SetItemForRoom.Size = new System.Drawing.Size(268, 44);
-            this.SetItemForRoom.TabIndex = 1;
-            this.SetItemForRoom.Text = "Назначить предмет на комнату";
-            this.SetItemForRoom.UseVisualStyleBackColor = true;
-            // 
-            // RemoveItemFromRoom
-            // 
-            this.RemoveItemFromRoom.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RemoveItemFromRoom.Location = new System.Drawing.Point(813, 660);
-            this.RemoveItemFromRoom.Name = "RemoveItemFromRoom";
-            this.RemoveItemFromRoom.Size = new System.Drawing.Size(245, 44);
-            this.RemoveItemFromRoom.TabIndex = 2;
-            this.RemoveItemFromRoom.Text = "Убрать предмет из комнаты";
-            this.RemoveItemFromRoom.UseVisualStyleBackColor = true;
-            this.RemoveItemFromRoom.Click += new System.EventHandler(this.RemoveItemFromRoom_Click);
             // 
             // CommandantForm
             // 

@@ -1,4 +1,5 @@
-﻿using DormitoryObjects.Repositories;
+﻿using DormitoryObjects;
+using DormitoryObjects.Repositories;
 using DormitoryObjects.Services;
 using System;
 using System.Collections.Generic;
@@ -64,26 +65,9 @@ namespace LogInSystem
                                 MessageBoxIcon.Error);
             }
         }
-        public async Task<bool> RemoveItemFromRoom()
+        public  Inventory GetSelectedItem()
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                try
-                {
-                    DataGridViewRow row = dataGridView1.SelectedRows[0];
-                    int id = (int)row.Cells[0].Value;
-                    await _inventoryService.RemoveInventoryFromRoom(id);
-                    return true;
-                }
-                catch(Exception ex)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+            return dataGridView1.CurrentRow?.DataBoundItem as Inventory;
         }
     }
 }

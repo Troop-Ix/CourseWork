@@ -30,5 +30,15 @@ namespace DormitoryObjects.MSRepositories
             var floors = await _db.Rooms.Select(r => r.Floor).Distinct().ToListAsync();
             return floors;
         }
+        public async Task<IEnumerable<int>> GetNumbersFromFloor(int floor)
+        {
+            var numbers = await _db.Rooms.Where(r=>r.Floor == floor).Select(r=>r.Number).ToListAsync();
+            return numbers;
+        }
+        public async Task<Room> GetRoomByFloorAndNumber(int floor, int number)
+        {
+            var room = await _db.Rooms.FirstOrDefaultAsync(r=>r.Floor==floor && r.Number==number);
+            return room;
+        }
     }
 }

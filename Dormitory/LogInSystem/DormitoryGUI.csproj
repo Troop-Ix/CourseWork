@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpingForms\SetInventoryForRoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\SetInventoryForRoomForm.Designer.cs">
+      <DependentUpon>SetInventoryForRoomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelpingForms\ShowRoomInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     <Compile Include="XMLClassesForDrawing\RoomLayout.cs" />
     <EmbeddedResource Include="ControlPanels\BenefitControl.resx">
       <DependentUpon>BenefitControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\SetInventoryForRoomForm.resx">
+      <DependentUpon>SetInventoryForRoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\ShowRoomInfo.resx">
       <DependentUpon>ShowRoomInfo.cs</DependentUpon>

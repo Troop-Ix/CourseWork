@@ -11,5 +11,7 @@ namespace DormitoryObjects.Repositories
         Task<IEnumerable<Room>> FilterRoomByOccupancy(int roomsCount);
         Task<IEnumerable<Room>> GetRoomsFromFloor(int floor);
         Task<IEnumerable<int>> GetFloors();
+        Task<IEnumerable<int>> GetNumbersFromFloor(int floor);
+        Task<Room> GetRoomByFloorAndNumber(int floor, int number);
     }
 }

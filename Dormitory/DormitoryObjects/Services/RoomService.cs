@@ -39,12 +39,28 @@ namespace DormitoryObjects.Services
                 return await repo.GetFloors();
             }
         }
+        public async Task<IEnumerable<int>> GetNumbersFromFloor(int floor)
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new RoomAdvancedRepository(db);
+                return await repo.GetNumbersFromFloor(floor);
+            }
+        }
         public async Task<IEnumerable<Room>> GetRoomsFromFloor(int floor)
         {
             using (var db = _factory.Create())
             {
                 var repo = new RoomAdvancedRepository(db);
                 return await repo.GetRoomsFromFloor(floor);
+            }
+        }
+        public async Task<Room> GetRoomByFloorAndNumber(int floor, int number)
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new RoomAdvancedRepository(db);
+                return await repo.GetRoomByFloorAndNumber(floor, number);
             }
         }
     }

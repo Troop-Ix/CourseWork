@@ -2,6 +2,7 @@
 using DormitoryObjects.Fabrics;
 using DormitoryObjects.Repositories;
 using DormitoryObjects.Services;
+using LogInSystem.HelpingForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,13 @@ namespace LogInSystem
         PaymentItemService _paymentItemService;
 
         BenefitTypeService _benefitTypeService;
+
+        InventoryControl _inventoryControl;
+        StudentControl _studentControl;
+        RoomControl _roomControl;
+        PaymentControl _paymentControl;
+        BenefitControl _benefitControl;
+        FloorsPlans _floorsPlans;
         public CommandantForm(IDbFactory factory, User user)
         {
             InitializeComponent();
@@ -61,80 +69,98 @@ namespace LogInSystem
         }
         private void LoadInventoryPanel(object sender, EventArgs e)
         {
-            var ic = new InventoryControl(_inventoryService, _inventoryTypesService, _inventoryStatesService);
+            _inventoryControl = new InventoryControl(_inventoryService, _inventoryTypesService, _inventoryStatesService);
 
-            ic.Dock = DockStyle.Fill;
+            _inventoryControl.Dock = DockStyle.Fill;
 
             panel1.Controls.Clear();
 
-            panel1.Controls.Add(ic);
+            panel1.Controls.Add(_inventoryControl);
         }
         private void LoadStudentsPanel(object sender, EventArgs e)
         {
-            var sc = new StudentControl(_studentsService);
+            _studentControl = new StudentControl(_studentsService);
 
-            sc.Dock = DockStyle.Fill;
+            _studentControl.Dock = DockStyle.Fill;
 
             panel2.Controls.Clear();
 
-            panel2.Controls.Add(sc);
+            panel2.Controls.Add(_studentControl);
         }
         private void LoadRoomsyPanel(object sender, EventArgs e)
         {
-            var rc = new RoomControl(_roomService);
+            _roomControl = new RoomControl(_roomService);
 
-            rc.Dock = DockStyle.Fill;
+            _roomControl.Dock = DockStyle.Fill;
 
             panel3.Controls.Clear();
 
-            panel3.Controls.Add(rc);
+            panel3.Controls.Add(_roomControl);
         }
         private void LoadPaymentsPanel(object sender, EventArgs e)
         {
-            var pc = new PaymentControl(_paymentService, _paymentItemService);
+            _paymentControl = new PaymentControl(_paymentService, _paymentItemService);
 
-            pc.Dock = DockStyle.Fill;
+            _paymentControl.Dock = DockStyle.Fill;
 
             panel4.Controls.Clear();
 
-            panel4.Controls.Add(pc);
+            panel4.Controls.Add(_paymentControl);
         }
         private void LoadBenefitTypesPanel(object sender, EventArgs e)
         {
-            var bc = new BenefitControl(_benefitTypeService);
+            _benefitControl = new BenefitControl(_benefitTypeService);
 
-            bc.Dock = DockStyle.Fill;
+            _benefitControl.Dock = DockStyle.Fill;
 
             panel5.Controls.Clear();
 
-            panel5.Controls.Add(bc);
+            panel5.Controls.Add(_benefitControl);
         }
         private void LoadFloorsPlansPanel(object sender, EventArgs e)
         {
-            var fp = new FloorsPlans(_roomService);
+            _floorsPlans = new FloorsPlans(_roomService);
 
-            fp.Dock = DockStyle.Fill;
+            _floorsPlans.Dock = DockStyle.Fill;
 
             panel8.Controls.Clear();
 
-            panel8.Controls.Add(fp);
+            panel8.Controls.Add(_floorsPlans);
         }
 
         private async void RemoveItemFromRoom_Click(object sender, EventArgs e)
         {
-                var inventoryControl = panel1.Controls[0] as InventoryControl;
-                if (inventoryControl != null)
+                if (_inventoryControl != null)
                 {
-                    var success = await inventoryControl.RemoveItemFromRoom();
-                    if (success)
+                    var item =  _inventoryControl.GetSelectedItem();
+                    if (item!=null)
                     {
-                        await inventoryControl.LoadInventory();
+                        await _inventoryService.RemoveInventoryFromRoom(item.ItemID);
+                        await _inventoryControl.LoadInventory();
                     }
                     else
                     {
                         MessageBox.Show("Не удалось изменить данные.");
                     }
                 }
+        }
+
+        private async void SetItemForRoom_Click(object sender, EventArgs e)
+        {
+            if (_inventoryControl != null)
+            {
+                var item = _inventoryControl.GetSelectedItem();
+                if (item != null)
+                {
+                    SetInventoryForRoomForm setItem = new SetInventoryForRoomForm(_roomService, _inventoryService, item.ItemID);
+                    setItem.ShowDialog();
+                    await _inventoryControl.LoadInventory();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось изменить данные.");
+                }
+            }
         }
     }
 }
