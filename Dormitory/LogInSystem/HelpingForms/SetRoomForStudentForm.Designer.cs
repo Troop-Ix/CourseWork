@@ -1,6 +1,6 @@
 ﻿namespace LogInSystem.HelpingForms
 {
-    partial class SetInventoryForRoomForm
+    partial class SetRoomForStudentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,15 +50,15 @@
             this.panel1.Size = new System.Drawing.Size(586, 109);
             this.panel1.TabIndex = 5;
             // 
-            // SetInventoryForRoomForm
+            // SetRoomForStudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 172);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Set);
-            this.Name = "SetInventoryForRoomForm";
-            this.Text = "Назначение инвентаря";
+            this.Name = "SetRoomForStudentForm";
+            this.Text = "Заселение студента";
             this.ResumeLayout(false);
 
         }
@@ -66,5 +66,6 @@
         #endregion
         private System.Windows.Forms.Button Set;
         private System.Windows.Forms.Panel panel1;
+
     }
 }

@@ -65,6 +65,7 @@ namespace LogInSystem
             this.Capacity});
             this.dataGridView1.Location = new System.Drawing.Point(163, 143);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(568, 212);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -73,30 +74,35 @@ namespace LogInSystem
             this.RoomID.DataPropertyName = "RoomID";
             this.RoomID.HeaderText = "ID";
             this.RoomID.Name = "RoomID";
+            this.RoomID.ReadOnly = true;
             // 
             // Number
             // 
             this.Number.DataPropertyName = "Number";
             this.Number.HeaderText = "Номер";
             this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
             // 
             // Floor
             // 
             this.Floor.DataPropertyName = "Floor";
             this.Floor.HeaderText = "Этаж";
             this.Floor.Name = "Floor";
+            this.Floor.ReadOnly = true;
             // 
             // Area
             // 
             this.Area.DataPropertyName = "Area";
             this.Area.HeaderText = "Площадь";
             this.Area.Name = "Area";
+            this.Area.ReadOnly = true;
             // 
             // Capacity
             // 
             this.Capacity.DataPropertyName = "Capacity";
             this.Capacity.HeaderText = "Вместимость";
             this.Capacity.Name = "Capacity";
+            this.Capacity.ReadOnly = true;
             // 
             // AvailablePlaces
             // 

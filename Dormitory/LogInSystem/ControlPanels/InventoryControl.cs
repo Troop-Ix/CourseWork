@@ -65,9 +65,20 @@ namespace LogInSystem
                                 MessageBoxIcon.Error);
             }
         }
-        public  Inventory GetSelectedItem()
+        public  int? GetSelectedItemID()
         {
-            return dataGridView1.CurrentRow?.DataBoundItem as Inventory;
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.Cells[0].Value == null)
+            {
+                return null;
+            }
+            if (int.TryParse(dataGridView1.CurrentRow.Cells[0].Value.ToString(), out int id))
+            {
+                return id;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

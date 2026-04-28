@@ -64,6 +64,7 @@ namespace LogInSystem
             this.BenefitIds});
             this.dataGridView1.Location = new System.Drawing.Point(3, 146);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1045, 201);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -72,60 +73,70 @@ namespace LogInSystem
             this.StudentID.DataPropertyName = "StudentID";
             this.StudentID.HeaderText = "ID";
             this.StudentID.Name = "StudentID";
+            this.StudentID.ReadOnly = true;
             // 
             // RoomID
             // 
             this.RoomID.DataPropertyName = "RoomID";
             this.RoomID.HeaderText = "ID комнаты";
             this.RoomID.Name = "RoomID";
+            this.RoomID.ReadOnly = true;
             // 
             // Surname
             // 
             this.Surname.DataPropertyName = "Surname";
             this.Surname.HeaderText = "Фамилия";
             this.Surname.Name = "Surname";
+            this.Surname.ReadOnly = true;
             // 
             // SName
             // 
             this.SName.DataPropertyName = "Name";
             this.SName.HeaderText = "Имя";
             this.SName.Name = "SName";
+            this.SName.ReadOnly = true;
             // 
             // MiddleName
             // 
             this.MiddleName.DataPropertyName = "Middlename";
             this.MiddleName.HeaderText = "Отчество";
             this.MiddleName.Name = "MiddleName";
+            this.MiddleName.ReadOnly = true;
             // 
             // BirthDate
             // 
             this.BirthDate.DataPropertyName = "Birthdate";
             this.BirthDate.HeaderText = "Дата рождения";
             this.BirthDate.Name = "BirthDate";
+            this.BirthDate.ReadOnly = true;
             // 
             // PhoneNumber
             // 
             this.PhoneNumber.DataPropertyName = "PhoneNumber";
             this.PhoneNumber.HeaderText = "Телефон";
             this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.ReadOnly = true;
             // 
             // Faculty
             // 
             this.Faculty.DataPropertyName = "Faculty";
             this.Faculty.HeaderText = "Факультет";
             this.Faculty.Name = "Faculty";
+            this.Faculty.ReadOnly = true;
             // 
             // Group
             // 
             this.Group.DataPropertyName = "Group";
             this.Group.HeaderText = "Группа";
             this.Group.Name = "Group";
+            this.Group.ReadOnly = true;
             // 
             // BenefitIds
             // 
             this.BenefitIds.DataPropertyName = "BenefitIds";
             this.BenefitIds.HeaderText = "Льготы";
             this.BenefitIds.Name = "BenefitIds";
+            this.BenefitIds.ReadOnly = true;
             // 
             // EnterSurname
             // 

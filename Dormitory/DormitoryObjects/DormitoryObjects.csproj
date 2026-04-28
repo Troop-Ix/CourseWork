@@ -77,7 +77,7 @@
     <Compile Include="Repositories\BenefitTypeRepository.cs" />
     <Compile Include="Repositories\InventoryRepository.cs" />
     <Compile Include="Repositories\InventoryStatesRepository.cs" />
-    <Compile Include="Repositories\InventoryStatesService.cs" />
+    <Compile Include="Services\InventoryStatesService.cs" />
     <Compile Include="Repositories\InventoryTypeRepository.cs" />
     <Compile Include="Repositories\PaymentItemRepository.cs" />
     <Compile Include="Repositories\PaymentRepository.cs" />

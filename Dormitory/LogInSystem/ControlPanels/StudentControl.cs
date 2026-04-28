@@ -1,4 +1,5 @@
-﻿using DormitoryObjects.Services;
+﻿using DormitoryObjects;
+using DormitoryObjects.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace LogInSystem
         {
             await LoadStudents();
         }
-        private async Task LoadStudents()
+        public async Task LoadStudents()
         {
             try
             {
@@ -92,6 +93,22 @@ namespace LogInSystem
                                 "Ошибка базы данных",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+            }
+        }
+
+        public  int? GetSelectedStudentID()
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.Cells[0].Value == null)
+            {
+                return null;
+            }
+            if (int.TryParse(dataGridView1.CurrentRow.Cells[0].Value.ToString(), out int id))
+            {
+                return id;
+            }
+            else
+            {
+                return null;
             }
         }
     }

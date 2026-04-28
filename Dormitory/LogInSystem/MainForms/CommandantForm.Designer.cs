@@ -31,11 +31,11 @@ namespace LogInSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.Inventorypanel = new System.Windows.Forms.Panel();
+            this.Studentpanel = new System.Windows.Forms.Panel();
+            this.RoomPanel = new System.Windows.Forms.Panel();
+            this.Paymentpanel = new System.Windows.Forms.Panel();
+            this.Benefitpanel = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.FIO = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,10 +48,17 @@ namespace LogInSystem
             this.RemoveItemFromRoom = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.AddBenefit = new System.Windows.Forms.Button();
+            this.SetRoomForStudent = new System.Windows.Forms.Button();
+            this.EvictStudentFromRoom = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.Planpanel = new System.Windows.Forms.Panel();
+            this.RemoveBenefitsFromStudent = new System.Windows.Forms.Button();
+            this.AddPayment = new System.Windows.Forms.Button();
+            this.ChangePayment = new System.Windows.Forms.Button();
+            this.RemovePayment = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -63,40 +70,40 @@ namespace LogInSystem
             this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // Inventorypanel
             // 
-            this.panel1.Location = new System.Drawing.Point(244, 29);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 625);
-            this.panel1.TabIndex = 0;
+            this.Inventorypanel.Location = new System.Drawing.Point(244, 29);
+            this.Inventorypanel.Name = "Inventorypanel";
+            this.Inventorypanel.Size = new System.Drawing.Size(991, 625);
+            this.Inventorypanel.TabIndex = 0;
             // 
-            // panel2
+            // Studentpanel
             // 
-            this.panel2.Location = new System.Drawing.Point(126, 46);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1065, 384);
-            this.panel2.TabIndex = 1;
+            this.Studentpanel.Location = new System.Drawing.Point(126, 46);
+            this.Studentpanel.Name = "Studentpanel";
+            this.Studentpanel.Size = new System.Drawing.Size(1065, 384);
+            this.Studentpanel.TabIndex = 1;
             // 
-            // panel3
+            // RoomPanel
             // 
-            this.panel3.Location = new System.Drawing.Point(322, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(823, 408);
-            this.panel3.TabIndex = 2;
+            this.RoomPanel.Location = new System.Drawing.Point(322, 6);
+            this.RoomPanel.Name = "RoomPanel";
+            this.RoomPanel.Size = new System.Drawing.Size(823, 408);
+            this.RoomPanel.TabIndex = 2;
             // 
-            // panel4
+            // Paymentpanel
             // 
-            this.panel4.Location = new System.Drawing.Point(227, 57);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1027, 501);
-            this.panel4.TabIndex = 3;
+            this.Paymentpanel.Location = new System.Drawing.Point(227, 57);
+            this.Paymentpanel.Name = "Paymentpanel";
+            this.Paymentpanel.Size = new System.Drawing.Size(1027, 501);
+            this.Paymentpanel.TabIndex = 3;
             // 
-            // panel5
+            // Benefitpanel
             // 
-            this.panel5.Location = new System.Drawing.Point(418, 30);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(551, 291);
-            this.panel5.TabIndex = 4;
+            this.Benefitpanel.Location = new System.Drawing.Point(418, 30);
+            this.Benefitpanel.Name = "Benefitpanel";
+            this.Benefitpanel.Size = new System.Drawing.Size(551, 291);
+            this.Benefitpanel.TabIndex = 4;
             // 
             // panel6
             // 
@@ -175,7 +182,7 @@ namespace LogInSystem
             // 
             this.tabPage1.Controls.Add(this.SetItemForRoom);
             this.tabPage1.Controls.Add(this.RemoveItemFromRoom);
-            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.Inventorypanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -208,7 +215,7 @@ namespace LogInSystem
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Controls.Add(this.RoomPanel);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -219,7 +226,11 @@ namespace LogInSystem
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.panel2);
+            this.tabPage3.Controls.Add(this.RemoveBenefitsFromStudent);
+            this.tabPage3.Controls.Add(this.AddBenefit);
+            this.tabPage3.Controls.Add(this.SetRoomForStudent);
+            this.tabPage3.Controls.Add(this.EvictStudentFromRoom);
+            this.tabPage3.Controls.Add(this.Studentpanel);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1367, 716);
@@ -227,9 +238,45 @@ namespace LogInSystem
             this.tabPage3.Text = "Студенты";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // AddBenefit
+            // 
+            this.AddBenefit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddBenefit.Location = new System.Drawing.Point(700, 464);
+            this.AddBenefit.Name = "AddBenefit";
+            this.AddBenefit.Size = new System.Drawing.Size(243, 40);
+            this.AddBenefit.TabIndex = 4;
+            this.AddBenefit.Text = "Добавить льготу студенту";
+            this.AddBenefit.UseVisualStyleBackColor = true;
+            this.AddBenefit.Click += new System.EventHandler(this.AddBenefit_Click);
+            // 
+            // SetRoomForStudent
+            // 
+            this.SetRoomForStudent.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SetRoomForStudent.Location = new System.Drawing.Point(449, 464);
+            this.SetRoomForStudent.Name = "SetRoomForStudent";
+            this.SetRoomForStudent.Size = new System.Drawing.Size(204, 40);
+            this.SetRoomForStudent.TabIndex = 3;
+            this.SetRoomForStudent.Text = "Заселить студента";
+            this.SetRoomForStudent.UseVisualStyleBackColor = true;
+            this.SetRoomForStudent.Click += new System.EventHandler(this.SetRoomForStudent_Click);
+            // 
+            // EvictStudentFromRoom
+            // 
+            this.EvictStudentFromRoom.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EvictStudentFromRoom.Location = new System.Drawing.Point(126, 464);
+            this.EvictStudentFromRoom.Name = "EvictStudentFromRoom";
+            this.EvictStudentFromRoom.Size = new System.Drawing.Size(271, 40);
+            this.EvictStudentFromRoom.TabIndex = 2;
+            this.EvictStudentFromRoom.Text = "Выселить студента из комнаты";
+            this.EvictStudentFromRoom.UseVisualStyleBackColor = true;
+            this.EvictStudentFromRoom.Click += new System.EventHandler(this.EvictStudentFromRoom_Click);
+            // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.panel4);
+            this.tabPage4.Controls.Add(this.RemovePayment);
+            this.tabPage4.Controls.Add(this.ChangePayment);
+            this.tabPage4.Controls.Add(this.AddPayment);
+            this.tabPage4.Controls.Add(this.Paymentpanel);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1367, 716);
@@ -239,7 +286,7 @@ namespace LogInSystem
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.panel5);
+            this.tabPage5.Controls.Add(this.Benefitpanel);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1367, 716);
@@ -249,7 +296,7 @@ namespace LogInSystem
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.panel8);
+            this.tabPage6.Controls.Add(this.Planpanel);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(1367, 716);
@@ -257,12 +304,56 @@ namespace LogInSystem
             this.tabPage6.Text = "Планы этажей";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // panel8
+            // Planpanel
             // 
-            this.panel8.Location = new System.Drawing.Point(270, 38);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(904, 557);
-            this.panel8.TabIndex = 0;
+            this.Planpanel.Location = new System.Drawing.Point(270, 38);
+            this.Planpanel.Name = "Planpanel";
+            this.Planpanel.Size = new System.Drawing.Size(904, 557);
+            this.Planpanel.TabIndex = 0;
+            // 
+            // RemoveBenefitsFromStudent
+            // 
+            this.RemoveBenefitsFromStudent.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveBenefitsFromStudent.Location = new System.Drawing.Point(975, 464);
+            this.RemoveBenefitsFromStudent.Name = "RemoveBenefitsFromStudent";
+            this.RemoveBenefitsFromStudent.Size = new System.Drawing.Size(216, 40);
+            this.RemoveBenefitsFromStudent.TabIndex = 5;
+            this.RemoveBenefitsFromStudent.Text = "Убрать льготы студента";
+            this.RemoveBenefitsFromStudent.UseVisualStyleBackColor = true;
+            this.RemoveBenefitsFromStudent.Click += new System.EventHandler(this.RemoveBenefitsFromStudent_Click);
+            // 
+            // AddPayment
+            // 
+            this.AddPayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddPayment.Location = new System.Drawing.Point(293, 585);
+            this.AddPayment.Name = "AddPayment";
+            this.AddPayment.Size = new System.Drawing.Size(192, 33);
+            this.AddPayment.TabIndex = 4;
+            this.AddPayment.Text = "Добавить Оплату";
+            this.AddPayment.UseVisualStyleBackColor = true;
+            this.AddPayment.Click += new System.EventHandler(this.AddPayment_Click);
+            // 
+            // ChangePayment
+            // 
+            this.ChangePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangePayment.Location = new System.Drawing.Point(587, 585);
+            this.ChangePayment.Name = "ChangePayment";
+            this.ChangePayment.Size = new System.Drawing.Size(183, 33);
+            this.ChangePayment.TabIndex = 5;
+            this.ChangePayment.Text = "Изменить оплату";
+            this.ChangePayment.UseVisualStyleBackColor = true;
+            this.ChangePayment.Click += new System.EventHandler(this.ChangePayment_Click);
+            // 
+            // RemovePayment
+            // 
+            this.RemovePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemovePayment.Location = new System.Drawing.Point(894, 585);
+            this.RemovePayment.Name = "RemovePayment";
+            this.RemovePayment.Size = new System.Drawing.Size(162, 34);
+            this.RemovePayment.TabIndex = 6;
+            this.RemovePayment.Text = "Удалить оплату";
+            this.RemovePayment.UseVisualStyleBackColor = true;
+            this.RemovePayment.Click += new System.EventHandler(this.RemovePayment_Click);
             // 
             // CommandantForm
             // 
@@ -291,11 +382,11 @@ namespace LogInSystem
 
         #endregion
 
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel4;
-        private Panel panel5;
+        private Panel Inventorypanel;
+        private Panel Studentpanel;
+        private Panel RoomPanel;
+        private Panel Paymentpanel;
+        private Panel Benefitpanel;
         private Panel panel6;
         private Label FIO;
         private Label label1;
@@ -309,8 +400,15 @@ namespace LogInSystem
         private TabPage tabPage4;
         private TabPage tabPage5;
         private TabPage tabPage6;
-        private Panel panel8;
+        private Panel Planpanel;
         private Button RemoveItemFromRoom;
         private Button SetItemForRoom;
+        private Button EvictStudentFromRoom;
+        private Button SetRoomForStudent;
+        private Button AddBenefit;
+        private Button RemoveBenefitsFromStudent;
+        private Button RemovePayment;
+        private Button ChangePayment;
+        private Button AddPayment;
     }
 }

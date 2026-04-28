@@ -20,13 +20,13 @@ namespace DormitoryObjects.MSRepositories
         }
         public async Task<IEnumerable<Student>> GetAll()
         {
-            var students = await _db.Students.OrderBy(s => s.StudentID).ToListAsync();
+            var students = await _db.Students.LoadWith(s=>s.StudentBenefits).OrderBy(s => s.StudentID).ToListAsync();
             return students;
         }
 
         public async Task<Student> GetById(int id)
         {
-            var student = await _db.Students.FirstOrDefaultAsync(s => s.StudentID == id);
+            var student = await _db.Students.LoadWith(s => s.StudentBenefits).FirstOrDefaultAsync(s => s.StudentID == id);
             return student;
         }
 

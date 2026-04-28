@@ -33,9 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,13 +48,38 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpingControl\SelectFloorAndNumberControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HelpingControl\SelectFloorAndNumberControl.Designer.cs">
+      <DependentUpon>SelectFloorAndNumberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\AddPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\AddPaymentForm.Designer.cs">
+      <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\SetBenefitForStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\SetBenefitForStudentForm.Designer.cs">
+      <DependentUpon>SetBenefitForStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelpingForms\SetInventoryForRoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HelpingForms\SetInventoryForRoomForm.Designer.cs">
       <DependentUpon>SetInventoryForRoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\SetRoomForStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\SetRoomForStudentForm.Designer.cs">
+      <DependentUpon>SetRoomForStudentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HelpingForms\ShowRoomInfo.cs">
       <SubType>Form</SubType>
@@ -123,8 +151,20 @@
     <EmbeddedResource Include="ControlPanels\BenefitControl.resx">
       <DependentUpon>BenefitControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HelpingControl\SelectFloorAndNumberControl.resx">
+      <DependentUpon>SelectFloorAndNumberControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\AddPaymentForm.resx">
+      <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\SetBenefitForStudentForm.resx">
+      <DependentUpon>SetBenefitForStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\SetInventoryForRoomForm.resx">
       <DependentUpon>SetInventoryForRoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\SetRoomForStudentForm.resx">
+      <DependentUpon>SetRoomForStudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\ShowRoomInfo.resx">
       <DependentUpon>ShowRoomInfo.cs</DependentUpon>
@@ -181,6 +221,5 @@
       <Name>DormitoryObjects</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

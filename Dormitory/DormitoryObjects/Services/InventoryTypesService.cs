@@ -25,5 +25,15 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
+        public async Task<IEnumerable<int>> GetInventoryTypesID()
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new InventoryTypeRepository(db);
+                var types= await repo.GetAll();
+                var typesID = types.Select(t => t.TypeID);
+                return typesID;
+            }
+        }
     }
 }

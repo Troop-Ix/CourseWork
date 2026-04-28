@@ -88,5 +88,24 @@ namespace DormitoryObjects.Services
                 }
             }
         }
+        public async Task<Student> GetStudentById(int id)
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new StudentAdvancedRepository(db);
+                var student = await repo.GetById(id);
+                return student;
+            }
+        }
+        public async Task<IEnumerable<int>> GetStudentsID()
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new StudentAdvancedRepository(db);
+                var students = await repo.GetAll();
+                var studentsID = students.Select(s => s.StudentID);
+                return studentsID;
+            }
+        }
     }
 }

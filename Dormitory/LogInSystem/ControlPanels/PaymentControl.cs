@@ -33,22 +33,32 @@ namespace LogInSystem
         }
         private async void PaymentControl_Load(object sender, EventArgs e)
         {
-            await Task.WhenAll(
-                LoadDataGrid(()=>  _paymentService.GetPayments(), dataGridView1),
-                LoadDataGrid(() => _paymentItemService.GetPaymentItems(), dataGridView2)
-                );
+            try
+            {
+                await Task.WhenAll(
+                    LoadDataGrid(() => _paymentService.GetPayments(), dataGridView1),
+                    LoadDataGrid(() => _paymentItemService.GetPaymentItems(), dataGridView2)
+                    );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось загрузить данные: {ex.Message}",
+                "Ошибка базы данных",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
         }
         private async Task LoadDataGrid<T>(Func<Task<IEnumerable<T>>> dataFunc, DataGridView dataGrid )
         {
             var data = await dataFunc();
             dataGrid.DataSource = data;
         }
-        private async Task LoadPayments()
+
+        public async Task LoadPayments()
         {
             try
             {
-                var payments = await _paymentService.GetPayments();
-                dataGridView1.DataSource = payments.ToList();
+                await LoadDataGrid(() => _paymentService.GetPayments(), dataGridView1);
             }
             catch (Exception ex)
             {
@@ -56,6 +66,21 @@ namespace LogInSystem
                                 "Ошибка базы данных",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+            }
+        }
+        public int? GetSelectedPaymentID()
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.Cells[0].Value == null)
+            {
+                return null;
+            }
+            if (int.TryParse(dataGridView1.CurrentRow.Cells[0].Value.ToString(), out int id))
+            {
+                return id;
+            }
+            else
+            {
+                return null;
             }
         }
     }

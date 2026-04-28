@@ -35,6 +35,11 @@ namespace LogInSystem
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lnventory = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.StateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,11 +49,6 @@ namespace LogInSystem
             this.InventoryTypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -81,6 +81,7 @@ namespace LogInSystem
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(27, 91);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -91,6 +92,43 @@ namespace LogInSystem
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(474, 503);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "ID";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            // 
+            // RoomID
+            // 
+            this.RoomID.DataPropertyName = "RoomID";
+            this.RoomID.HeaderText = "ID комнаты";
+            this.RoomID.Name = "RoomID";
+            this.RoomID.ReadOnly = true;
+            this.RoomID.Width = 50;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "TypeID";
+            this.NameColumn.HeaderText = "Тип";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // Condition
+            // 
+            this.Condition.DataPropertyName = "StateID";
+            this.Condition.HeaderText = "Состояние";
+            this.Condition.Name = "Condition";
+            this.Condition.ReadOnly = true;
+            this.Condition.Width = 80;
+            // 
+            // PurchaseDate
+            // 
+            this.PurchaseDate.DataPropertyName = "PurchaseDate";
+            this.PurchaseDate.HeaderText = "Дата приобретения";
+            this.PurchaseDate.Name = "PurchaseDate";
+            this.PurchaseDate.ReadOnly = true;
             // 
             // lnventory
             // 
@@ -110,6 +148,7 @@ namespace LogInSystem
             this.SName});
             this.dataGridView2.Location = new System.Drawing.Point(586, 138);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(245, 155);
             this.dataGridView2.TabIndex = 2;
             // 
@@ -118,12 +157,14 @@ namespace LogInSystem
             this.StateID.DataPropertyName = "StateID";
             this.StateID.HeaderText = "ID";
             this.StateID.Name = "StateID";
+            this.StateID.ReadOnly = true;
             // 
             // SName
             // 
             this.SName.DataPropertyName = "Name";
             this.SName.HeaderText = "Название";
             this.SName.Name = "SName";
+            this.SName.ReadOnly = true;
             // 
             // label1
             // 
@@ -143,6 +184,7 @@ namespace LogInSystem
             this.TName});
             this.dataGridView3.Location = new System.Drawing.Point(586, 380);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(245, 184);
             this.dataGridView3.TabIndex = 4;
             // 
@@ -151,12 +193,14 @@ namespace LogInSystem
             this.InventoryTypeID.DataPropertyName = "TypeID";
             this.InventoryTypeID.HeaderText = "ID";
             this.InventoryTypeID.Name = "InventoryTypeID";
+            this.InventoryTypeID.ReadOnly = true;
             // 
             // TName
             // 
             this.TName.DataPropertyName = "Name";
             this.TName.HeaderText = "Название";
             this.TName.Name = "TName";
+            this.TName.ReadOnly = true;
             // 
             // label2
             // 
@@ -167,38 +211,6 @@ namespace LogInSystem
             this.label2.Size = new System.Drawing.Size(142, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Типы инвентаря";
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "ItemID";
-            this.ItemID.HeaderText = "ID";
-            this.ItemID.Name = "ItemID";
-            // 
-            // RoomID
-            // 
-            this.RoomID.DataPropertyName = "RoomID";
-            this.RoomID.HeaderText = "ID комнаты";
-            this.RoomID.Name = "RoomID";
-            this.RoomID.Width = 50;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "TypeID";
-            this.NameColumn.HeaderText = "Тип";
-            this.NameColumn.Name = "NameColumn";
-            // 
-            // Condition
-            // 
-            this.Condition.DataPropertyName = "StateID";
-            this.Condition.HeaderText = "Состояние";
-            this.Condition.Name = "Condition";
-            this.Condition.Width = 80;
-            // 
-            // PurchaseDate
-            // 
-            this.PurchaseDate.DataPropertyName = "PurchaseDate";
-            this.PurchaseDate.HeaderText = "Дата приобретения";
-            this.PurchaseDate.Name = "PurchaseDate";
             // 
             // InventoryControl
             // 

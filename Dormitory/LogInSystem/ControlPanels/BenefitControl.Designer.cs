@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.BenefitID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +64,7 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(22, 95);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -75,6 +76,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(343, 150);
             this.dataGridView1.TabIndex = 0;
             // 
+            // BenefitID
+            // 
+            this.BenefitID.DataPropertyName = "BenefitID";
+            this.BenefitID.HeaderText = "ID";
+            this.BenefitID.Name = "BenefitID";
+            this.BenefitID.ReadOnly = true;
+            // 
+            // BName
+            // 
+            this.BName.DataPropertyName = "Name";
+            this.BName.HeaderText = "Название";
+            this.BName.Name = "BName";
+            this.BName.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Описание";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -84,24 +106,6 @@
             this.label1.Size = new System.Drawing.Size(104, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Типы льгот";
-            // 
-            // BenefitID
-            // 
-            this.BenefitID.DataPropertyName = "BenefitID";
-            this.BenefitID.HeaderText = "ID";
-            this.BenefitID.Name = "BenefitID";
-            // 
-            // BName
-            // 
-            this.BName.DataPropertyName = "Name";
-            this.BName.HeaderText = "Название";
-            this.BName.Name = "BName";
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Описание";
-            this.Description.Name = "Description";
             // 
             // BenefitControl
             // 

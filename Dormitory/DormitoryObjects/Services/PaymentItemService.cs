@@ -25,5 +25,15 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
+        public async Task<IEnumerable<int>> GetPaymentItemsID()
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new PaymentItemRepository(db);
+                var items = await repo.GetAll();
+                var itemsID = items.Select(i => i.PaymentItemID);
+                return itemsID;
+            }
+        }
     }
 }

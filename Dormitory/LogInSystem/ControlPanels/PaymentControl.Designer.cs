@@ -32,17 +32,17 @@ namespace LogInSystem
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.PaymentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaidAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaymentItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastPaymentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -59,8 +59,51 @@ namespace LogInSystem
             this.LastPaymentDate});
             this.dataGridView1.Location = new System.Drawing.Point(13, 97);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(643, 337);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // PaymentID
+            // 
+            this.PaymentID.DataPropertyName = "PaymentID";
+            this.PaymentID.HeaderText = "ID";
+            this.PaymentID.Name = "PaymentID";
+            this.PaymentID.ReadOnly = true;
+            // 
+            // StudentID
+            // 
+            this.StudentID.DataPropertyName = "StudentID";
+            this.StudentID.HeaderText = "ID студента";
+            this.StudentID.Name = "StudentID";
+            this.StudentID.ReadOnly = true;
+            // 
+            // PaidAmount
+            // 
+            this.PaidAmount.DataPropertyName = "PaidAmount";
+            this.PaidAmount.HeaderText = "Внесено";
+            this.PaidAmount.Name = "PaidAmount";
+            this.PaidAmount.ReadOnly = true;
+            // 
+            // AmountDue
+            // 
+            this.AmountDue.DataPropertyName = "AmountDue";
+            this.AmountDue.HeaderText = "Сумма к оплате";
+            this.AmountDue.Name = "AmountDue";
+            this.AmountDue.ReadOnly = true;
+            // 
+            // PaymentItemID
+            // 
+            this.PaymentItemID.DataPropertyName = "PaymentItemID";
+            this.PaymentItemID.HeaderText = "Предмет оплаты";
+            this.PaymentItemID.Name = "PaymentItemID";
+            this.PaymentItemID.ReadOnly = true;
+            // 
+            // LastPaymentDate
+            // 
+            this.LastPaymentDate.DataPropertyName = "LastPaymentDate";
+            this.LastPaymentDate.HeaderText = "Дата последней оплаты";
+            this.LastPaymentDate.Name = "LastPaymentDate";
+            this.LastPaymentDate.ReadOnly = true;
             // 
             // label1
             // 
@@ -72,42 +115,6 @@ namespace LogInSystem
             this.label1.TabIndex = 1;
             this.label1.Text = "Оплаты";
             // 
-            // PaymentID
-            // 
-            this.PaymentID.DataPropertyName = "PaymentID";
-            this.PaymentID.HeaderText = "ID";
-            this.PaymentID.Name = "PaymentID";
-            // 
-            // StudentID
-            // 
-            this.StudentID.DataPropertyName = "StudentID";
-            this.StudentID.HeaderText = "ID студента";
-            this.StudentID.Name = "StudentID";
-            // 
-            // PaidAmount
-            // 
-            this.PaidAmount.DataPropertyName = "PaidAmount";
-            this.PaidAmount.HeaderText = "Внесено";
-            this.PaidAmount.Name = "PaidAmount";
-            // 
-            // AmountDue
-            // 
-            this.AmountDue.DataPropertyName = "AmountDue";
-            this.AmountDue.HeaderText = "Сумма к оплате";
-            this.AmountDue.Name = "AmountDue";
-            // 
-            // PaymentItemID
-            // 
-            this.PaymentItemID.DataPropertyName = "PaymentItemID";
-            this.PaymentItemID.HeaderText = "Предмет оплаты";
-            this.PaymentItemID.Name = "PaymentItemID";
-            // 
-            // LastPaymentDate
-            // 
-            this.LastPaymentDate.DataPropertyName = "LastPaymentDate";
-            this.LastPaymentDate.HeaderText = "Дата последней оплаты";
-            this.LastPaymentDate.Name = "LastPaymentDate";
-            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -116,8 +123,23 @@ namespace LogInSystem
             this.PName});
             this.dataGridView2.Location = new System.Drawing.Point(726, 97);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(240, 179);
             this.dataGridView2.TabIndex = 2;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "PaymentItemID";
+            this.ItemID.HeaderText = "ID";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            // 
+            // PName
+            // 
+            this.PName.DataPropertyName = "Name";
+            this.PName.HeaderText = "Название";
+            this.PName.Name = "PName";
+            this.PName.ReadOnly = true;
             // 
             // label2
             // 
@@ -128,18 +150,6 @@ namespace LogInSystem
             this.label2.Size = new System.Drawing.Size(142, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Предметы оплат";
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "PaymentItemID";
-            this.ItemID.HeaderText = "ID";
-            this.ItemID.Name = "ItemID";
-            // 
-            // PName
-            // 
-            this.PName.DataPropertyName = "Name";
-            this.PName.HeaderText = "Название";
-            this.PName.Name = "PName";
             // 
             // PaymentControl
             // 

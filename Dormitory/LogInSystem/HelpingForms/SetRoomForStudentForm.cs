@@ -12,17 +12,17 @@ using System.Windows.Forms;
 
 namespace LogInSystem.HelpingForms
 {
-    public partial class SetInventoryForRoomForm : Form
+    public partial class SetRoomForStudentForm : Form
     {
         SelectFloorAndNumberControl floorAndNumberControl;
         RoomService _roomService;
-        InventoryService _inventoryService;
-        int _itemID;
-        public SetInventoryForRoomForm(RoomService roomService, InventoryService inventoryService, int itemID)
+        StudentsService _studentsService;
+        int _studentID;
+        public SetRoomForStudentForm(RoomService roomService, StudentsService studentsService, int studentID)
         {
             InitializeComponent();
-            _inventoryService = inventoryService;
-            _itemID = itemID;
+            _studentsService=studentsService;
+            _studentID=studentID;
             _roomService = roomService;
             floorAndNumberControl = new SelectFloorAndNumberControl(_roomService);
             LoadSelectingFloorAndNumber();
@@ -41,15 +41,15 @@ namespace LogInSystem.HelpingForms
             int selectedFloor = floorAndNumberControl.SelectedFloor();
             int selectedNumber = floorAndNumberControl.SelectedNumber();
             var room = await _roomService.GetRoomByFloorAndNumber(selectedFloor, selectedNumber);
-            if(room != null)
+            if (room != null)
             {
-                await _inventoryService.SetInventoryForRoom(_itemID, room.RoomID);
+                await _studentsService.SetRoomForStudent(_studentID, room.RoomID);
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Заданная комната не найдена");
             }
-        } 
+        }
     }
 }

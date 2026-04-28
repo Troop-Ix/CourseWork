@@ -23,5 +23,15 @@ namespace DormitoryObjects.Repositories
                 return await repo.GetAll();
             }
         }
+        public async Task<IEnumerable<int>> GetInventoryStatesID()
+        {
+            using (var db = _factory.Create())
+            {
+                var repo = new InventoryStatesRepository(db);
+                var states = await repo.GetAll();
+                var statesID = states.Select(s => s.StateID);
+                return statesID;
+            }
+        }
     }
 }
