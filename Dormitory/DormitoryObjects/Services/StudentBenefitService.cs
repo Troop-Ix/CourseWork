@@ -23,52 +23,27 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
-        public async Task<bool> SetBenefitForStudent(int studentID, int benefitID, DateTime issueDate)
+        public async Task SetBenefitForStudent(int studentID, int benefitID, DateTime issueDate)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new StudentBenefitRepository(db);
                     var studentRepo = new StudentAdvancedRepository(db);
                     var benefitRepo = new BenefitTypeRepository(db);
 
-                    var studentExists = await studentRepo.GetById(studentID);
-                    if (studentExists == null)
-                    {
-                        return false;
-                    }
-
-                    var benefitExists = await benefitRepo.GetById(benefitID);
-                    if (benefitExists == null)
-                    {
-                        return false;
-                    }
+                    var studentExists = await studentRepo.GetById(studentID) ?? throw new Exception("Студент не найден в базе данных");
+                    var benefitExists = await benefitRepo.GetById(benefitID) ?? throw new Exception("Льгота не найдена в базе данных");
                     var studentBenefit = new StudentBenefit { BenefitID = benefitID, StudentID = studentID, IssueDate = issueDate };
                     await repo.Create(studentBenefit);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> RemoveBenefitFromStudent(int studentBenefitId)
+        public async Task RemoveBenefitFromStudent(int studentBenefitId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new StudentBenefitRepository(db);
 
                     await repo.Delete(studentBenefitId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
     }

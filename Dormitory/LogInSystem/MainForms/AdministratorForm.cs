@@ -2,6 +2,7 @@
 using DormitoryObjects.Fabrics;
 using DormitoryObjects.Repositories;
 using DormitoryObjects.Services;
+using LogInSystem.HelpingForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,14 @@ namespace LogInSystem
         PaymentItemService _paymentItemService;
 
         BenefitTypeService _benefitTypeService;
+        StudentBenefitService _studentBenefitService;
+
+        InventoryControl _inventoryControl;
+        StudentControl _studentControl;
+        RoomControl _roomControl;
+        PaymentControl _paymentControl;
+        BenefitControl _benefitControl;
+        FloorsPlans _floorsPlans;
         public AdministratorForm(IDbFactory factory, User user)
         {
             InitializeComponent();
@@ -48,76 +57,129 @@ namespace LogInSystem
             _paymentItemService = new PaymentItemService(_factory);
 
             _benefitTypeService = new BenefitTypeService(_factory);
+            _studentBenefitService = new StudentBenefitService(_factory);
 
             FIO.Text = $"{user.Surname} {user.Name} {user.Middlename}";
             Role.Text = user.Type;
 
-            this.Load += LoadInventoryPanel;
-            this.Load += LoadStudentsPanel;
-            this.Load += LoadPaymentsPanel;
-            this.Load += LoadRoomsyPanel;
-            this.Load += LoadBenefitTypesPanel;
-            this.Load += LoadFloorsPlansPanel;
+
+            this.Load += LoadTabs;
         }
-        private void LoadInventoryPanel(object sender, EventArgs e)
+        private void LoadTabs(object sender, EventArgs e)
         {
-            var ic = new InventoryControl(_inventoryService, _inventoryTypesService, _inventoryStatesService);
+            _inventoryControl = new InventoryControl(_inventoryService, _inventoryTypesService, _inventoryStatesService);
+            _inventoryControl.Dock = DockStyle.Fill;
+            Inventorypanel.Controls.Clear();
+            Inventorypanel.Controls.Add(_inventoryControl);
 
-            ic.Dock = DockStyle.Fill;
+            _studentControl = new StudentControl(_studentsService);
+            _studentControl.Dock = DockStyle.Fill;
+            Studentpanel.Controls.Clear();
+            Studentpanel.Controls.Add(_studentControl);
 
-            panel1.Controls.Clear();
+            _roomControl = new RoomControl(_roomService);
+            _roomControl.Dock = DockStyle.Fill;
+            RoomPanel.Controls.Clear();
+            RoomPanel.Controls.Add(_roomControl);
 
-            panel1.Controls.Add(ic);
+            _paymentControl = new PaymentControl(_paymentService, _paymentItemService);
+            _paymentControl.Dock = DockStyle.Fill;
+            Paymentpanel.Controls.Clear();
+            Paymentpanel.Controls.Add(_paymentControl);
+
+            _benefitControl = new BenefitControl(_benefitTypeService);
+            _benefitControl.Dock = DockStyle.Fill;
+            Benefitpanel.Controls.Clear();
+            Benefitpanel.Controls.Add(_benefitControl);
+
+            _floorsPlans = new FloorsPlans(_roomService);
+            _floorsPlans.Dock = DockStyle.Fill;
+            Planpanel.Controls.Clear();
+            Planpanel.Controls.Add(_floorsPlans);
         }
-        private void LoadStudentsPanel(object sender, EventArgs e)
+
+        private async void AddItem_Click(object sender, EventArgs e)
         {
-            var sc = new StudentControl(_studentsService);
-
-            sc.Dock = DockStyle.Fill;
-
-            panel2.Controls.Clear();
-
-            panel2.Controls.Add(sc);
+            if (_inventoryControl != null)
+            {
+                    using (var addItem = new AddItemForm(_inventoryService, _inventoryTypesService))
+                    {
+                        try
+                        {
+                            addItem.ShowDialog();
+                            await _inventoryControl.LoadInventory();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка обновления данных: {ex.Message}");
+                        }
+                    }
+            }
         }
-        private void LoadRoomsyPanel(object sender, EventArgs e)
+
+        private async void RemoveItem_Click(object sender, EventArgs e)
         {
-            var rc = new RoomControl(_roomService);
+            if (_inventoryControl != null)
+            {
+                var itemID = _inventoryControl.GetSelectedItemID();
+                if (!itemID.HasValue)
+                {
+                    MessageBox.Show("Выберите предмет в списке");
+                    return;
+                }
+                else
+                {
+                    await _inventoryService.RemoveInventory(itemID.Value);
+                    await _inventoryControl.LoadInventory();
+                }
 
-            rc.Dock = DockStyle.Fill;
-
-            panel3.Controls.Clear();
-
-            panel3.Controls.Add(rc);
+            }
         }
-        private void LoadPaymentsPanel(object sender, EventArgs e)
+
+        private async void ChangeStateOfItem_Click(object sender, EventArgs e)
         {
-            var pc = new PaymentControl(_paymentService, _paymentItemService);
-
-            pc.Dock = DockStyle.Fill;
-
-            panel4.Controls.Clear();
-
-            panel4.Controls.Add(pc);
+            if (_inventoryControl != null)
+            {
+                var itemID = _inventoryControl.GetSelectedItemID();
+                if (!itemID.HasValue)
+                {
+                    MessageBox.Show("Выберите предмет в списке");
+                    return;
+                }
+                else
+                {
+                    using (var changeItem = new ChangeItemConditionForm(itemID.Value, _inventoryService, _inventoryStatesService))
+                    {
+                        try
+                        {
+                            changeItem.ShowDialog();
+                            await _inventoryControl.LoadInventory();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка обновления данных: {ex.Message}");
+                        }
+                    }
+                }
+            }
         }
-        private void LoadBenefitTypesPanel(object sender, EventArgs e)
+
+        private async void GetDebtors_Click(object sender, EventArgs e)
         {
-            var bc = new BenefitControl(_benefitTypeService);
-
-            bc.Dock = DockStyle.Fill;
-
-            panel5.Controls.Clear();
-
-            panel5.Controls.Add(bc);
-        }
-        private void LoadFloorsPlansPanel(object sender, EventArgs e)
-        {
-            var fp = new FloorsPlans(_roomService);
-
-            fp.Dock = DockStyle.Fill;
-
-            panel8.Controls.Clear();
-
-            panel8.Controls.Add(fp);
+            if(_studentControl!= null)
+            {
+                using (var showDebtors = new ShowDebtorsForm(_studentsService))
+                {
+                    try
+                    {
+                        showDebtors.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка обновления данных: {ex.Message}");
+                    }
+                }
+            }
         }
     }
 }

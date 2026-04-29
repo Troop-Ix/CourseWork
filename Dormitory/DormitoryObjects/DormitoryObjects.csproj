@@ -66,7 +66,6 @@
     <Compile Include="Databases\MSDormitoryDatabase.cs" />
     <Compile Include="Entities\BenefitType.cs" />
     <Compile Include="Entities\Inventory.cs" />
-    <Compile Include="Entities\InventoryStateEnum.cs" />
     <Compile Include="Entities\InventoryStates.cs" />
     <Compile Include="Entities\InventoryTypes.cs" />
     <Compile Include="Entities\Payment.cs" />

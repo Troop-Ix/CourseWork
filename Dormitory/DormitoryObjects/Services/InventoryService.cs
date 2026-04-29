@@ -25,135 +25,74 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
-        public async Task<bool> AddInventory(int typeID, int stateID, DateTime purchaseDate)
+        public async Task AddInventory(int typeID, int stateID, DateTime purchaseDate)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new InventoryRepository(db);
                     var repoInventoryTypes = new InventoryTypeRepository(db);
                     var repoInventoryStates = new InventoryStatesRepository(db);
 
-                    var type = await repoInventoryTypes.GetById(typeID);
-                    if(type == null)
-                    {
-                        return false;
-                    }
-                    var state = await repoInventoryStates.GetById(stateID);
-                    if(state == null)
-                    {
-                        return false;
-                    }
+                    var type = await repoInventoryTypes.GetById(typeID) ?? throw new Exception("Тип инвентаря не найден в базе данных");
+
+                    var state = await repoInventoryStates.GetById(stateID) ?? throw new Exception("Состояние инвентаря не найдено в базе данных");
+
 
                     var item = new Inventory { RoomID = null, TypeID=typeID, StateID = stateID, PurchaseDate = purchaseDate };
                     await repo.Create(item);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> UpdateInventoryCondition(int itemId, InventoryStateEnum newState)
+        public async Task UpdateInventoryCondition(int itemId, int newState)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new InventoryRepository(db);
+                    var item = await repo.GetById(itemId) ?? throw new Exception("Предмет не найден в базе данных"); 
 
-                    var item = await repo.GetById(itemId);
-                    if (item == null)
-                    { 
-                        return false;
-                    }
-                    if (newState == InventoryStateEnum.InStorage || newState == InventoryStateEnum.InRepair)
+                    if (newState == 2 || newState == 3)
                     {
                         item.RoomID = null;
                     }
-                    item.StateID = (int)newState;
+                    item.StateID = newState;
                     await repo.Update(item, itemId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> RemoveInventory(int itemId)
+        public async Task RemoveInventory(int itemId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new InventoryRepository(db);
                     await repo.Delete(itemId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> SetInventoryForRoom(int itemId, int roomId)
+        public async Task SetInventoryForRoom(int itemId, int roomId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new InventoryRepository(db);
                     var roomRepo = new RoomAdvancedRepository(db);
 
-                    var room = await roomRepo.GetById(roomId);
-                    if (room == null)
+                    var room = await roomRepo.GetById(roomId) ?? throw new Exception("Комната не найдена в базе данных");
+
+                    var inventory = await repo.GetById(itemId) ?? throw new Exception("Предмет не найден в базе данных");
+
+                    if (inventory.StateID == 3)
                     {
-                        return false;
-                    }
-                    var inventory = await repo.GetById(itemId);
-                    if (inventory == null)
-                    {
-                        return false;
-                    }
-                    if (inventory.StateID == (int)InventoryStateEnum.InRepair)
-                    {
-                        return false;
+                        throw new Exception("Нельзя назначить предмет, который в ремонте");
                     }
                     inventory.RoomID = roomId;
                     await repo.Update(inventory, itemId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> RemoveInventoryFromRoom(int itemId)
+        public async Task RemoveInventoryFromRoom(int itemId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new InventoryRepository(db);
-                    var inventory = await repo.GetById(itemId);
-
-                    if (inventory == null)
-                    {
-                        return false;
-                    }
+                    var inventory = await repo.GetById(itemId) ?? throw new Exception("Предмет не найден в базе данных");
                     inventory.RoomID = null;
-                    inventory.StateID = (int)InventoryStateEnum.InStorage;
+                    inventory.StateID = 2;
                     await repo.Update(inventory, itemId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
     }

@@ -44,6 +44,7 @@
             // 
             // BenefitsList
             // 
+            this.BenefitsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BenefitsList.FormattingEnabled = true;
             this.BenefitsList.Location = new System.Drawing.Point(206, 111);
             this.BenefitsList.Name = "BenefitsList";

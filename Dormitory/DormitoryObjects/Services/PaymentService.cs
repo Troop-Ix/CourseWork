@@ -23,59 +23,42 @@ namespace DormitoryObjects.Services
                 return await repo.GetAll();
             }
         }
-        public async Task<bool> AddPayment(int studentID, decimal paidAmount, decimal amountDue, int paymentItemID, DateTime? lastPaymentDate)
+        public async Task AddPayment(int studentID, decimal paidAmount, decimal amountDue, int paymentItemID, DateTime? lastPaymentDate)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new PaymentRepository(db);
-                    var payment = new Payment { StudentID = studentID, PaidAmount = paidAmount, AmountDue = amountDue, PaymentItemID=paymentItemID, LastPaymentDate = lastPaymentDate };
+                    var payment = new Payment { StudentID = studentID, PaidAmount = paidAmount, AmountDue = amountDue, PaymentItemID = paymentItemID, LastPaymentDate = lastPaymentDate };
                     await repo.Create(payment);
-                    return true;
-                }
-                catch (Exception ex)
-                { return false; }
             }
         }
 
-        public async Task<bool> ChangePayment(int paymentId, decimal amount, DateTime date)
+        public async Task ChangePayment(int paymentId, decimal amount, DateTime date)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new PaymentRepository(db);
-                    var payment = await repo.GetById(paymentId);
-                    if (payment == null)
-                    {
-                        return false;
-                    }
+                    var payment = await repo.GetById(paymentId) ?? throw new Exception("Платеж не найден в базе данных"); 
+
                     payment.PaidAmount = amount;
                     payment.LastPaymentDate = date;
                     await repo.Update(payment, paymentId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> RemovePayment(int paymentId)
+        public async Task RemovePayment(int paymentId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new PaymentRepository(db);
                     await repo.Delete(paymentId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
+            }
+        }
+        public async Task<Payment> GetPaymentByID(int id)
+        {
+            using ( var db = _factory.Create())
+            {
+                var repo = new PaymentRepository(db);
+                return await repo.GetById(id);
             }
         }
     }

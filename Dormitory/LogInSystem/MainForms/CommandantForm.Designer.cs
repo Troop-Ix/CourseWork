@@ -48,17 +48,17 @@ namespace LogInSystem
             this.RemoveItemFromRoom = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.RemoveBenefitsFromStudent = new System.Windows.Forms.Button();
             this.AddBenefit = new System.Windows.Forms.Button();
             this.SetRoomForStudent = new System.Windows.Forms.Button();
             this.EvictStudentFromRoom = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.RemovePayment = new System.Windows.Forms.Button();
+            this.ChangePayment = new System.Windows.Forms.Button();
+            this.AddPayment = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.Planpanel = new System.Windows.Forms.Panel();
-            this.RemoveBenefitsFromStudent = new System.Windows.Forms.Button();
-            this.AddPayment = new System.Windows.Forms.Button();
-            this.ChangePayment = new System.Windows.Forms.Button();
-            this.RemovePayment = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -238,6 +238,17 @@ namespace LogInSystem
             this.tabPage3.Text = "Студенты";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // RemoveBenefitsFromStudent
+            // 
+            this.RemoveBenefitsFromStudent.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemoveBenefitsFromStudent.Location = new System.Drawing.Point(975, 464);
+            this.RemoveBenefitsFromStudent.Name = "RemoveBenefitsFromStudent";
+            this.RemoveBenefitsFromStudent.Size = new System.Drawing.Size(216, 40);
+            this.RemoveBenefitsFromStudent.TabIndex = 5;
+            this.RemoveBenefitsFromStudent.Text = "Убрать льготы студента";
+            this.RemoveBenefitsFromStudent.UseVisualStyleBackColor = true;
+            this.RemoveBenefitsFromStudent.Click += new System.EventHandler(this.RemoveBenefitsFromStudent_Click);
+            // 
             // AddBenefit
             // 
             this.AddBenefit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -284,6 +295,39 @@ namespace LogInSystem
             this.tabPage4.Text = "Оплаты";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // RemovePayment
+            // 
+            this.RemovePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RemovePayment.Location = new System.Drawing.Point(894, 585);
+            this.RemovePayment.Name = "RemovePayment";
+            this.RemovePayment.Size = new System.Drawing.Size(162, 34);
+            this.RemovePayment.TabIndex = 6;
+            this.RemovePayment.Text = "Удалить оплату";
+            this.RemovePayment.UseVisualStyleBackColor = true;
+            this.RemovePayment.Click += new System.EventHandler(this.RemovePayment_Click);
+            // 
+            // ChangePayment
+            // 
+            this.ChangePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangePayment.Location = new System.Drawing.Point(587, 585);
+            this.ChangePayment.Name = "ChangePayment";
+            this.ChangePayment.Size = new System.Drawing.Size(183, 33);
+            this.ChangePayment.TabIndex = 5;
+            this.ChangePayment.Text = "Изменить оплату";
+            this.ChangePayment.UseVisualStyleBackColor = true;
+            this.ChangePayment.Click += new System.EventHandler(this.ChangePayment_Click);
+            // 
+            // AddPayment
+            // 
+            this.AddPayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddPayment.Location = new System.Drawing.Point(293, 585);
+            this.AddPayment.Name = "AddPayment";
+            this.AddPayment.Size = new System.Drawing.Size(192, 33);
+            this.AddPayment.TabIndex = 4;
+            this.AddPayment.Text = "Добавить Оплату";
+            this.AddPayment.UseVisualStyleBackColor = true;
+            this.AddPayment.Click += new System.EventHandler(this.AddPayment_Click);
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.Benefitpanel);
@@ -311,50 +355,6 @@ namespace LogInSystem
             this.Planpanel.Size = new System.Drawing.Size(904, 557);
             this.Planpanel.TabIndex = 0;
             // 
-            // RemoveBenefitsFromStudent
-            // 
-            this.RemoveBenefitsFromStudent.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RemoveBenefitsFromStudent.Location = new System.Drawing.Point(975, 464);
-            this.RemoveBenefitsFromStudent.Name = "RemoveBenefitsFromStudent";
-            this.RemoveBenefitsFromStudent.Size = new System.Drawing.Size(216, 40);
-            this.RemoveBenefitsFromStudent.TabIndex = 5;
-            this.RemoveBenefitsFromStudent.Text = "Убрать льготы студента";
-            this.RemoveBenefitsFromStudent.UseVisualStyleBackColor = true;
-            this.RemoveBenefitsFromStudent.Click += new System.EventHandler(this.RemoveBenefitsFromStudent_Click);
-            // 
-            // AddPayment
-            // 
-            this.AddPayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddPayment.Location = new System.Drawing.Point(293, 585);
-            this.AddPayment.Name = "AddPayment";
-            this.AddPayment.Size = new System.Drawing.Size(192, 33);
-            this.AddPayment.TabIndex = 4;
-            this.AddPayment.Text = "Добавить Оплату";
-            this.AddPayment.UseVisualStyleBackColor = true;
-            this.AddPayment.Click += new System.EventHandler(this.AddPayment_Click);
-            // 
-            // ChangePayment
-            // 
-            this.ChangePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangePayment.Location = new System.Drawing.Point(587, 585);
-            this.ChangePayment.Name = "ChangePayment";
-            this.ChangePayment.Size = new System.Drawing.Size(183, 33);
-            this.ChangePayment.TabIndex = 5;
-            this.ChangePayment.Text = "Изменить оплату";
-            this.ChangePayment.UseVisualStyleBackColor = true;
-            this.ChangePayment.Click += new System.EventHandler(this.ChangePayment_Click);
-            // 
-            // RemovePayment
-            // 
-            this.RemovePayment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RemovePayment.Location = new System.Drawing.Point(894, 585);
-            this.RemovePayment.Name = "RemovePayment";
-            this.RemovePayment.Size = new System.Drawing.Size(162, 34);
-            this.RemovePayment.TabIndex = 6;
-            this.RemovePayment.Text = "Удалить оплату";
-            this.RemovePayment.UseVisualStyleBackColor = true;
-            this.RemovePayment.Click += new System.EventHandler(this.RemovePayment_Click);
-            // 
             // CommandantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +364,7 @@ namespace LogInSystem
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Name = "CommandantForm";
-            this.Text = "CommandantForm";
+            this.Text = "Комендант";
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);

@@ -57,11 +57,29 @@
     <Compile Include="HelpingControl\SelectFloorAndNumberControl.Designer.cs">
       <DependentUpon>SelectFloorAndNumberControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelpingForms\AddItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\AddItemForm.Designer.cs">
+      <DependentUpon>AddItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelpingForms\AddPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HelpingForms\AddPaymentForm.Designer.cs">
       <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\ChangeItemConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\ChangeItemConditionForm.Designer.cs">
+      <DependentUpon>ChangeItemConditionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\ChangePaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\ChangePaymentForm.Designer.cs">
+      <DependentUpon>ChangePaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HelpingForms\SetBenefitForStudentForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +98,12 @@
     </Compile>
     <Compile Include="HelpingForms\SetRoomForStudentForm.Designer.cs">
       <DependentUpon>SetRoomForStudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpingForms\ShowDebtorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpingForms\ShowDebtorsForm.Designer.cs">
+      <DependentUpon>ShowDebtorsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HelpingForms\ShowRoomInfo.cs">
       <SubType>Form</SubType>
@@ -154,8 +178,17 @@
     <EmbeddedResource Include="HelpingControl\SelectFloorAndNumberControl.resx">
       <DependentUpon>SelectFloorAndNumberControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\AddItemForm.resx">
+      <DependentUpon>AddItemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\AddPaymentForm.resx">
       <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\ChangeItemConditionForm.resx">
+      <DependentUpon>ChangeItemConditionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\ChangePaymentForm.resx">
+      <DependentUpon>ChangePaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\SetBenefitForStudentForm.resx">
       <DependentUpon>SetBenefitForStudentForm.cs</DependentUpon>
@@ -165,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\SetRoomForStudentForm.resx">
       <DependentUpon>SetRoomForStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpingForms\ShowDebtorsForm.resx">
+      <DependentUpon>ShowDebtorsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpingForms\ShowRoomInfo.resx">
       <DependentUpon>ShowRoomInfo.cs</DependentUpon>

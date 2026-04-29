@@ -105,7 +105,7 @@ namespace LogInSystem
                 var itemID = _inventoryControl.GetSelectedItemID();
                 if (!itemID.HasValue)
                 {
-                    MessageBox.Show("Выберите студента в списке");
+                    MessageBox.Show("Выберите предмет в списке");
                     return;
                 }
                 else
@@ -130,7 +130,7 @@ namespace LogInSystem
                 var itemID = _inventoryControl.GetSelectedItemID();
                 if (!itemID.HasValue)
                 {
-                    MessageBox.Show("Выберите студента в списке");
+                    MessageBox.Show("Выберите предмет в списке");
                     return;
                 }
                 else
@@ -279,9 +279,33 @@ namespace LogInSystem
                 }
             }
         }
-        private void ChangePayment_Click(object sender, EventArgs e)
+        private async void ChangePayment_Click(object sender, EventArgs e)
         {
+            if (_paymentControl != null)
+            {
+                var paymentID = _paymentControl.GetSelectedPaymentID();
+                if (!paymentID.HasValue)
+                {
+                    MessageBox.Show("Выберите оплату в списке");
+                    return;
+                }
+                else
+                {
+                    using (var changePayment = new ChangePaymentForm(paymentID.Value, _paymentService))
+                    {
+                        try
+                        {
+                            changePayment.ShowDialog();
+                            await _paymentControl.LoadPayments();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка обновления данных: {ex.Message}");
+                        }
+                    }
 
+                }
+            }
         }
 
         private async void RemovePayment_Click(object sender, EventArgs e)

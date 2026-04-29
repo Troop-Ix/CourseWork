@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PaidAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountDue)).BeginInit();
             this.SuspendLayout();
@@ -65,12 +66,12 @@
             0,
             0});
             this.AmountDue.Name = "AmountDue";
-            this.AmountDue.Size = new System.Drawing.Size(120, 20);
+            this.AmountDue.Size = new System.Drawing.Size(167, 20);
             this.AmountDue.TabIndex = 1;
             // 
             // LastDatePayment
             // 
-            this.LastDatePayment.Location = new System.Drawing.Point(462, 97);
+            this.LastDatePayment.Location = new System.Drawing.Point(12, 212);
             this.LastDatePayment.Name = "LastDatePayment";
             this.LastDatePayment.ShowCheckBox = true;
             this.LastDatePayment.Size = new System.Drawing.Size(200, 20);
@@ -97,7 +98,7 @@
             // Add
             // 
             this.Add.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Add.Location = new System.Drawing.Point(334, 186);
+            this.Add.Location = new System.Drawing.Point(168, 263);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(99, 34);
             this.Add.TabIndex = 5;
@@ -141,15 +142,26 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(238, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(180, 21);
+            this.label4.Size = new System.Drawing.Size(171, 21);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Список ID студентов";
+            this.label4.Text = "Необходимая сумма";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(13, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(199, 21);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Дата последней оплаты";
             // 
             // AddPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 254);
+            this.ClientSize = new System.Drawing.Size(461, 322);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -181,5 +193,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

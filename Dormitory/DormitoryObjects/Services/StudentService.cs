@@ -36,56 +36,33 @@ namespace DormitoryObjects.Services
                 return await repo.GetDebtors();
             }
         }
-        public async Task<bool> EvictStudent(int studentId)
+        public async Task EvictStudent(int studentId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new StudentAdvancedRepository(db);
-                    var student = await repo.GetById(studentId);
-                    if (student == null)
-                    {
-                        return false;
-                    }
+                    var student = await repo.GetById(studentId) ?? throw new Exception("Студент не найден в базе данных");
                     student.RoomID = null;
                     await repo.Update(student, studentId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
-        public async Task<bool> SetRoomForStudent(int studentId, int roomId)
+        public async Task SetRoomForStudent(int studentId, int roomId)
         {
             using (var db = _factory.Create())
             {
-                try
-                {
                     var repo = new StudentAdvancedRepository(db);
                     var roomRepo = new RoomAdvancedRepository(db);
 
                     var room = await roomRepo.GetById(roomId);
                     if (room == null || room.Students.Count >= room.Capacity)
                     {
-                        return false;
+                         throw new Exception("Не хватает мест в заданной комнате");
                     }
-                    var student = await repo.GetById(studentId);
+                    var student = await repo.GetById(studentId) ?? throw new Exception("Студент не найден в базе данных");
 
-                    if (student == null)
-                    {
-                        return false;
-                    }
+
                     student.RoomID = roomId;
                     await repo.Update(student, studentId);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
             }
         }
         public async Task<Student> GetStudentById(int id)
@@ -97,14 +74,13 @@ namespace DormitoryObjects.Services
                 return student;
             }
         }
-        public async Task<IEnumerable<int>> GetStudentsID()
+        public async Task<IEnumerable<Student>> GetStudents()
         {
             using (var db = _factory.Create())
             {
                 var repo = new StudentAdvancedRepository(db);
                 var students = await repo.GetAll();
-                var studentsID = students.Select(s => s.StudentID);
-                return studentsID;
+                return students;
             }
         }
     }
