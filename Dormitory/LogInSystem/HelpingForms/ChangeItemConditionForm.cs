@@ -32,17 +32,25 @@ namespace LogInSystem.HelpingForms
         }
         private async void LoadInitialization()
         {
-            var states = await _inventoryStatesService.GetInventoryStates();
-            StatesList.DataSource = states.ToList();
-            StatesList.DisplayMember = "Name";
-            StatesList.ValueMember = "StateID";
-            if (states.Any())
+            try
             {
-                Change.Enabled = true;
-                StatesList.SelectedIndex = 0;
+                var states = await _inventoryStatesService.GetInventoryStates();
+                StatesList.DataSource = states.ToList();
+                StatesList.DisplayMember = "Name";
+                StatesList.ValueMember = "StateID";
+                if (states.Any())
+                {
+                    Change.Enabled = true;
+                    StatesList.SelectedIndex = 0;
+                }
+                else
+                {
+                    Change.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка при загрузке состояний инвентаря: {ex.Message}");
                 Change.Enabled = false;
             }
         }

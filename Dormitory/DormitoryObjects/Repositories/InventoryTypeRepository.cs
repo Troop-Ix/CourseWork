@@ -38,7 +38,7 @@ namespace DormitoryObjects.Repositories
 
         public async Task Update(InventoryTypes itemType, int id)
         {
-            var oldItemType = await GetById(id);
+            var oldItemType = await _db.InventoryTypes.FirstOrDefaultAsync(i => i.TypeID == id);
             if (oldItemType != null)
             {
                oldItemType.Name = itemType.Name;

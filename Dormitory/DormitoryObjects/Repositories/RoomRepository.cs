@@ -40,7 +40,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(Room room, int id)
         {
-            var oldRoom = await GetById(id);
+            var oldRoom = await _db.Rooms.LoadWith(r => r.Students).LoadWith(r => r.Inventory).FirstOrDefaultAsync(r => r.RoomID == id);
             if (oldRoom != null)
             {
                 oldRoom.Area = room.Area;

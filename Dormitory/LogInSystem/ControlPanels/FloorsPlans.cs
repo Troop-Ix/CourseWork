@@ -1,5 +1,6 @@
 ﻿using DormitoryObjects;
 using DormitoryObjects.Services;
+using LogInSystem.Fabrics;
 using LogInSystem.HelpingForms;
 using LogInSystem.XMLClassesForDrawing;
 using System;
@@ -65,7 +66,7 @@ namespace LogInSystem
                 var coord = _currentFloorLayout.Rooms.FirstOrDefault(r => r.RoomID == room.RoomID);
                 if (coord == null) continue;
 
-                Brush brush = GetRoomStatusBrush(room);
+                Brush brush = RoomStyler.GetBrushByStatus(room); 
 
                 g.FillRectangle(brush, coord.X, coord.Y, coord.Width, coord.Height);
                 g.DrawRectangle(Pens.Black, coord.X, coord.Y, coord.Width, coord.Height);
@@ -73,18 +74,6 @@ namespace LogInSystem
                 g.DrawString(room.Number.ToString(), this.Font, Brushes.Black, coord.X + 5, coord.Y + 5);
 
             }
-        }
-        private Brush GetRoomStatusBrush(Room room)
-        {
-            int currentStudents = room.Students?.Count ?? 0;
-
-            if (currentStudents >= room.Capacity)
-                return Brushes.Red;
-
-            if (currentStudents > 0)
-                return Brushes.Yellow;
-
-            return Brushes.LimeGreen;
         }
         private void FloorPanel_MouseDoubleClick(object sender, MouseEventArgs e)
         {

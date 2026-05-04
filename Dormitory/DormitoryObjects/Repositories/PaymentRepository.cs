@@ -39,7 +39,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(Payment payment, int id)
         {
-            var oldPayment = await GetById(id);
+            var oldPayment = await _db.Payments.LoadWith(p => p.PaymentItem).FirstOrDefaultAsync(p => p.PaymentID == id);
             if (oldPayment != null)
             {
                 oldPayment.StudentID = payment.StudentID;

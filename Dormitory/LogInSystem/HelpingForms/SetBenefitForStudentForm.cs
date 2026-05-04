@@ -32,17 +32,25 @@ namespace LogInSystem.HelpingForms
         }
         private async void LoadInitialization()
         {
-            var benefits = await _benefitTypeService.GetBenefitTypes();
-            BenefitsList.DisplayMember = "Name"; 
-            BenefitsList.ValueMember = "BenefitID";
-            BenefitsList.DataSource = benefits.ToList();
-            if (benefits.Any())
+            try
             {
-                Set.Enabled = true;
-                BenefitsList.SelectedIndex = 0;
+                var benefits = await _benefitTypeService.GetBenefitTypes();
+                BenefitsList.DisplayMember = "Name";
+                BenefitsList.ValueMember = "BenefitID";
+                BenefitsList.DataSource = benefits.ToList();
+                if (benefits.Any())
+                {
+                    Set.Enabled = true;
+                    BenefitsList.SelectedIndex = 0;
+                }
+                else
+                {
+                    Set.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка при загрузке типов льгот: {ex.Message}");
                 Set.Enabled = false;
             }
         }
@@ -53,9 +61,15 @@ namespace LogInSystem.HelpingForms
             {
                 int benefitID = (int)BenefitsList.SelectedValue;
                 DateTime dateIssue = DateIssue.Value;
-
-                await _studentBenefitService.SetBenefitForStudent(_studentId, benefitID, dateIssue);
-                this.Close();
+                try
+                {
+                    await _studentBenefitService.SetBenefitForStudent(_studentId, benefitID, dateIssue);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось изменить данные: {ex.Message}");
+                }
             }
             else
             {

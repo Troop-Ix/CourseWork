@@ -72,7 +72,7 @@
     <Compile Include="Entities\PaymentItem.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Fabrics\DbFactory.cs" />
-    <Compile Include="Fabrics\IDbFactorye1.cs" />
+    <Compile Include="Fabrics\IDbFactory.cs" />
     <Compile Include="Repositories\BenefitTypeRepository.cs" />
     <Compile Include="Repositories\InventoryRepository.cs" />
     <Compile Include="Repositories\InventoryStatesRepository.cs" />

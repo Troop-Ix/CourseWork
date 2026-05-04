@@ -29,17 +29,25 @@ namespace LogInSystem.HelpingForms
         }
         private async void LoadInitialization()
         {
-            var types = await _inventoryTypesService.GetInventoryTypes();
-            TypesList.DataSource = types.ToList();
-            TypesList.DisplayMember = "Name";
-            TypesList.ValueMember = "TypeID";
-            if (types.Any())
+            try
             {
-                Add.Enabled = true;
-                TypesList.SelectedIndex = 0;
+                var types = await _inventoryTypesService.GetInventoryTypes();
+                TypesList.DataSource = types.ToList();
+                TypesList.DisplayMember = "Name";
+                TypesList.ValueMember = "TypeID";
+                if (types.Any())
+                {
+                    Add.Enabled = true;
+                    TypesList.SelectedIndex = 0;
+                }
+                else
+                {
+                    Add.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка при загрузке инвентаря: {ex.Message}");
                 Add.Enabled = false;
             }
         }

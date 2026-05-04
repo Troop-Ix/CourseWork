@@ -40,7 +40,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(StudentBenefit studentBenefit, int id)
         {
-            var oldStudentBenefit = await GetById(id);
+            var oldStudentBenefit = await _db.StudentBenefits.LoadWith(sb => sb.Student).LoadWith(sb => sb.BenefitType).FirstOrDefaultAsync(sb => sb.StudentBenefitID == id);
             if (oldStudentBenefit != null)
             {
                 oldStudentBenefit.StudentID = studentBenefit.StudentID;

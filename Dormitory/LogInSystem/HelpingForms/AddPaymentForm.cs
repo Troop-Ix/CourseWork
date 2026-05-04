@@ -30,31 +30,40 @@ namespace LogInSystem.HelpingForms
         }
         private async void LoadInitialization()
         {
-            var students = await _studentsService.GetStudents();
-            var displayList = students.Select(s => new {
-                Id = s.StudentID,
-                FullName = $"{s.Surname} {s.Name} {s.Middlename}"
-            }).ToList();
-
-            var paymentItems = await _paymentItemService.GetPaymentItems();
-
-            StudentsIDList.DataSource = displayList.ToList();
-            PaymentItemsList.DataSource = paymentItems.ToList();
-
-            PaymentItemsList.DisplayMember = "Name";
-            PaymentItemsList.ValueMember = "PaymentItemID";
-
-            StudentsIDList.DataSource = displayList;
-            StudentsIDList.DisplayMember = "FullName";
-            StudentsIDList.ValueMember = "Id";
-            if (displayList.Any() && paymentItems.Any())
+            try
             {
-                Add.Enabled = true;
-                StudentsIDList.SelectedIndex = 0;
-                PaymentItemsList.SelectedIndex = 0;
+                var students = await _studentsService.GetStudents();
+                var displayList = students.Select(s => new
+                {
+                    Id = s.StudentID,
+                    FullName = $"{s.Surname} {s.Name} {s.Middlename}"
+                }).ToList();
+
+                var paymentItems = await _paymentItemService.GetPaymentItems();
+
+                StudentsIDList.DataSource = displayList.ToList();
+                PaymentItemsList.DataSource = paymentItems.ToList();
+
+                PaymentItemsList.DisplayMember = "Name";
+                PaymentItemsList.ValueMember = "PaymentItemID";
+
+                StudentsIDList.DataSource = displayList;
+                StudentsIDList.DisplayMember = "FullName";
+                StudentsIDList.ValueMember = "Id";
+                if (displayList.Any() && paymentItems.Any())
+                {
+                    Add.Enabled = true;
+                    StudentsIDList.SelectedIndex = 0;
+                    PaymentItemsList.SelectedIndex = 0;
+                }
+                else
+                {
+                    Add.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
                 Add.Enabled = false;
             }
         }

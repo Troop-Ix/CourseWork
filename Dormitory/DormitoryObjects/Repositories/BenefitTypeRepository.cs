@@ -40,7 +40,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(BenefitType benefitType, int id)
         {
-            var oldBenefitType = await GetById(id);
+            var oldBenefitType = await _db.BenefitTypes.FirstOrDefaultAsync(bt => bt.BenefitID == id);
             if (oldBenefitType != null)
             {
                 oldBenefitType.Name = benefitType.Name;

@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Building>
 	<FloorLayout Number="1">
-		<Room RoomID="1" X="20" Y="20" Width="100" Height="60" />
-		<Room RoomID="2" X="130" Y="20" Width="100" Height="60" />
+		<Room RoomID="1" X="10" Y="10" Width="70" Height="60" />
+		<Room RoomID="2" X="105" Y="10" Width="75" Height="60" />
+		<Room RoomID="3" X="205" Y="10" Width="100" Height="75" />
+		<Room RoomID="4" X="320" Y="10" Width="105" Height="75" />
+		
+		<Room RoomID="5" X="10" Y="210" Width="100" Height="60" />
+		<Room RoomID="6" X="125" Y="205" Width="105" Height="65" />
+		<Room RoomID="7" X="265" Y="200" Width="110" Height="70" />
+		<Room RoomID="8" X="390" Y="200" Width="110" Height="70" />
 	</FloorLayout>
 
 	<FloorLayout Number="2">
-		<Room RoomID="10" X="20" Y="20" Width="100" Height="60" />
-		<Room RoomID="11" X="130" Y="20" Width="100" Height="60" />
+		<Room RoomID="9" X="10" Y="10" Width="65" Height="55" />
+		<Room RoomID="10" X="110" Y="10" Width="70" Height="55" />
+		<Room RoomID="11" X="195" Y="10" Width="95" Height="70" />
+		<Room RoomID="12" X="305" Y="10" Width="100" Height="70" />
+		<Room RoomID="13" X="420" Y="10" Width="105" Height="70" />
+		
+		<Room RoomID="14" X="10" Y="210" Width="95" Height="60" />
+		<Room RoomID="15" X="140" Y="205" Width="100" Height="65" />
+		<Room RoomID="16" X="255" Y="200" Width="105" Height="70" />
+		<Room RoomID="17" X="375" Y="200" Width="110" Height="70" />
 	</FloorLayout>
-</Building> 
+
+	<FloorLayout Number="3">
+		<Room RoomID="18" X="10" Y="10" Width="75" Height="60" />
+		<Room RoomID="19" X="120" Y="10" Width="100" Height="75" />
+		<Room RoomID="20" X="235" Y="10" Width="105" Height="75" />
+		<Room RoomID="21" X="355" Y="10" Width="110" Height="75" />
+		
+		<Room RoomID="22" X="10" Y="205" Width="105" Height="65" />
+		<Room RoomID="23" X="150" Y="200" Width="110" Height="70" />
+		<Room RoomID="24" X="275" Y="200" Width="115" Height="70" />
+	</FloorLayout>
+
+	<FloorLayout Number="4">
+		<Room RoomID="25" X="10" Y="10" Width="70" Height="60" />
+		<Room RoomID="26" X="115" Y="10" Width="75" Height="60" />
+		<Room RoomID="27" X="205" Y="10" Width="100" Height="75" />
+		<Room RoomID="28" X="320" Y="10" Width="105" Height="75" />
+
+		<Room RoomID="29" X="10" Y="210" Width="100" Height="60" />
+		<Room RoomID="30" X="145" Y="205" Width="105" Height="65" />
+		<Room RoomID="31" X="265" Y="200" Width="110" Height="70" />
+		<Room RoomID="32" X="390" Y="200" Width="110" Height="70" />
+	</FloorLayout>
+
+	<FloorLayout Number="5">
+		<Room RoomID="33" X="10" Y="10" Width="65" Height="55" />
+		<Room RoomID="34" X="110" Y="10" Width="70" Height="55" />
+		<Room RoomID="35" X="195" Y="10" Width="95" Height="70" />
+		<Room RoomID="36" X="305" Y="10" Width="100" Height="70" />
+		<Room RoomID="37" X="420" Y="10" Width="105" Height="70" />
+
+		<Room RoomID="38" X="10" Y="210" Width="95" Height="60" />
+		<Room RoomID="39" X="140" Y="205" Width="100" Height="65" />
+		<Room RoomID="40" X="255" Y="200" Width="105" Height="70" />
+		<Room RoomID="41" X="375" Y="200" Width="110" Height="70" />
+	</FloorLayout>
+</Building>

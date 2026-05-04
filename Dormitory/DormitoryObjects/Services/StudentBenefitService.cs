@@ -1,5 +1,6 @@
 ﻿using DormitoryObjects.Fabrics;
 using DormitoryObjects.MSRepositories;
+using LinqToDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +38,11 @@ namespace DormitoryObjects.Services
                     await repo.Create(studentBenefit);
             }
         }
-        public async Task RemoveBenefitFromStudent(int studentBenefitId)
+        public async Task RemoveAllBenefitsFromStudent(int studentId)
         {
             using (var db = _factory.Create())
             {
-                    var repo = new StudentBenefitRepository(db);
-
-                    await repo.Delete(studentBenefitId);
+                await db.StudentBenefits.Where(sb => sb.StudentID == studentId).DeleteAsync();
             }
         }
     }

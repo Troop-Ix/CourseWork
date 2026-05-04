@@ -43,8 +43,15 @@ namespace LogInSystem.HelpingForms
             var room = await _roomService.GetRoomByFloorAndNumber(selectedFloor, selectedNumber);
             if (room != null)
             {
-                await _studentsService.SetRoomForStudent(_studentID, room.RoomID);
-                this.Close();
+                try
+                {
+                    await _studentsService.SetRoomForStudent(_studentID, room.RoomID);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось заселить студента в комнату: {ex.Message}");
+                }
             }
             else
             {

@@ -31,9 +31,17 @@ namespace LogInSystem.HelpingForms
         }
         private async void LoadInitialization()
         {
-            payment = await _paymentService.GetPaymentByID(_paymentID);
-            ChangeAmount.Value = payment.PaidAmount;
-            ChangeAmount.Minimum = payment.PaidAmount;
+            try
+            {
+                payment = await _paymentService.GetPaymentByID(_paymentID);
+                ChangeAmount.Value = payment.PaidAmount;
+                ChangeAmount.Minimum = payment.PaidAmount;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке оплаты: {ex.Message}");
+                Change.Enabled = false;
+            }
         }
         private async void Change_Click(object sender, EventArgs e)
         {

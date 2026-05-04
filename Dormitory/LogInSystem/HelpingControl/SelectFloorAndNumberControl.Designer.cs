@@ -56,6 +56,7 @@
             // 
             // FloorsList
             // 
+            this.FloorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FloorsList.FormattingEnabled = true;
             this.FloorsList.Location = new System.Drawing.Point(145, 67);
             this.FloorsList.Name = "FloorsList";
@@ -65,6 +66,7 @@
             // 
             // NumbersList
             // 
+            this.NumbersList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NumbersList.FormattingEnabled = true;
             this.NumbersList.Location = new System.Drawing.Point(435, 67);
             this.NumbersList.Name = "NumbersList";

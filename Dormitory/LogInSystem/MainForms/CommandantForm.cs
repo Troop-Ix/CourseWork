@@ -249,11 +249,7 @@ namespace LogInSystem
                     MessageBox.Show("Студент не найден");
                     return;
                 }
-                foreach (var sb in student.StudentBenefits)
-                {
-                    await _studentBenefitService.RemoveBenefitFromStudent(sb.StudentBenefitID);
-                }
-
+                await _studentBenefitService.RemoveAllBenefitsFromStudent(studentID.Value);
                 await _studentControl.LoadStudents();
             }
             catch (Exception ex)

@@ -38,7 +38,7 @@ namespace DormitoryObjects.Repositories
 
         public async Task Update(PaymentItem paymentItem, int id)
         {
-            var oldPaymentItem = await GetById(id);
+            var oldPaymentItem = await _db.PaymentItems.FirstOrDefaultAsync(p => p.PaymentItemID == id);
             if (oldPaymentItem != null)
             {
                 oldPaymentItem.PaymentItemID=paymentItem.PaymentItemID;

@@ -40,7 +40,7 @@ namespace DormitoryObjects.MSRepositories
 
         public async Task Update(User user, int id)
         {
-            var oldUser = await GetById(id);
+            var oldUser = await _db.Users.FirstOrDefaultAsync(u => u.UserID == id);
             if (oldUser != null)
             {
                 oldUser.Login = user.Login;

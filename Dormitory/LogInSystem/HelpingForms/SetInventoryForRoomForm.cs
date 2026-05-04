@@ -43,8 +43,18 @@ namespace LogInSystem.HelpingForms
             var room = await _roomService.GetRoomByFloorAndNumber(selectedFloor, selectedNumber);
             if(room != null)
             {
-                await _inventoryService.SetInventoryForRoom(_itemID, room.RoomID);
-                this.Close();
+                try
+                {
+                    await _inventoryService.SetInventoryForRoom(_itemID, room.RoomID);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось изменить данные: {ex.Message}",
+                                "Ошибка базы данных",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                }
             }
             else
             {
