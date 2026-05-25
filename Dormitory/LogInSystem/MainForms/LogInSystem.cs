@@ -15,23 +15,44 @@ using System.Windows.Forms;
 
 namespace LogInSystem
 {
+    /// <summary>
+    /// Форма для входа в систему
+    /// </summary>
     public partial class LogInSystem : Form
     {
         UserService userService;
         DbFactory dbFactory;
+        RepositoryFactory repositoryFactory;
         public LogInSystem()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Попытка входа в систему на основе введённых логина и пароля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void EnterTheSystem_Click(object sender, EventArgs e)
         {
             string login = LoginInput.Text;
             string password = PasswordInput.Text;
+
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
+            {
+                LoginInput.BackColor = Color.MistyRose;
+                PasswordInput.BackColor = Color.MistyRose;
+                MessageBox.Show("Введите логин и пароль");
+                return; 
+            }
+
+            LoginInput.BackColor = Color.White;
+            PasswordInput.BackColor = Color.White;
+
             string connectionString = GetConnectionString(login, password);
 
             dbFactory = new DbFactory(connectionString, DormitoryObjects.Databases.DatabaseType.MSDormitoryDatabase);
-            userService = new UserService(dbFactory);
+            repositoryFactory = new RepositoryFactory();
+            userService = new UserService(dbFactory, repositoryFactory);
 
             EnterTheSystem.Enabled = false;
             try
@@ -57,7 +78,7 @@ namespace LogInSystem
             {
                 LoginInput.BackColor = Color.MistyRose;
                 PasswordInput.BackColor = Color.MistyRose;
-                MessageBox.Show("Неверный логин или пароль.");
+                MessageBox.Show($"Ошибка базы данных: {ex.Message}");
             }
             finally
             {
@@ -65,7 +86,12 @@ namespace LogInSystem
             }
 
         }
-
+        /// <summary>
+        /// Формирование строки подключения из введённых логина и пароля
+        /// </summary>
+        /// <param name="login">Логин пользователя</param>
+        /// <param name="password">Пароль пользователя</param>
+        /// <returns></returns>
         public static string GetConnectionString(string login, string password)
         {
             string baseConnectionString = ConfigurationManager.ConnectionStrings["DormitoryBase"].ConnectionString;

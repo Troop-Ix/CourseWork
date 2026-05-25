@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно для назначения предмета на комнату
+    /// </summary>
     public partial class SetInventoryForRoomForm : Form
     {
         SelectFloorAndNumberControl floorAndNumberControl;
@@ -27,6 +30,9 @@ namespace LogInSystem.HelpingForms
             floorAndNumberControl = new SelectFloorAndNumberControl(_roomService);
             LoadSelectingFloorAndNumber();
         }
+        /// <summary>
+        /// Загрузка пользовательского элемента управления, в котором имеются списки с номерами этажей и соответствующих им номеров комнат
+        /// </summary>
         private void LoadSelectingFloorAndNumber()
         {
             floorAndNumberControl.Dock = DockStyle.Fill;
@@ -35,7 +41,11 @@ namespace LogInSystem.HelpingForms
 
             panel1.Controls.Add(floorAndNumberControl);
         }
-
+        /// <summary>
+        /// Назначение предмета в выбранную комнату
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Set_Click(object sender, EventArgs e)
         {
             int selectedFloor = floorAndNumberControl.SelectedFloor();

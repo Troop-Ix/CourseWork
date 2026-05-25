@@ -35,5 +35,4 @@ namespace DormitoryObjects
         [Association(ThisKey = "BenefitID", OtherKey = "BenefitID")]
         public List<StudentBenefit> StudentBenefits { get; set; }
     }
-
 }

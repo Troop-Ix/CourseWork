@@ -13,6 +13,9 @@ using System.Windows.Media;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно для добавления льготы студенту
+    /// </summary>
     public partial class SetBenefitForStudentForm : Form
     {
         BenefitTypeService _benefitTypeService;
@@ -30,6 +33,9 @@ namespace LogInSystem.HelpingForms
             base.OnLoad(e);
             LoadInitialization();
         }
+        /// <summary>
+        /// Инициализация списка видов оплат
+        /// </summary>
         private async void LoadInitialization()
         {
             try
@@ -54,7 +60,11 @@ namespace LogInSystem.HelpingForms
                 Set.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Добавление льготы студенту
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Set_Click(object sender, EventArgs e)
         {
             if (BenefitsList.SelectedValue != null)

@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace LogInSystem
 {
+    /// <summary>
+    /// Пользовательский элемент управления для отображения таблицы с информацией по типам льгот
+    /// </summary>
     public partial class BenefitControl : UserControl
     {
         BenefitTypeService _benefitTypeService;
@@ -29,6 +32,10 @@ namespace LogInSystem
         {
             await LoadBenefitType();
         }
+        /// <summary>
+        /// Загрузка данных о типах льгот
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadBenefitType()
         {
             try

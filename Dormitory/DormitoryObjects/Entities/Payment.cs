@@ -51,6 +51,9 @@ namespace DormitoryObjects
         /// </summary>
         [Association(ThisKey = "StudentID", OtherKey = "StudentID", CanBeNull = false)]
         public Student Student { get; set; }
+        /// <summary>
+        /// Объект предмета оплаты, связанный с оплатой
+        /// </summary>
         [Association(ThisKey = "PaymentItemID", OtherKey = "PaymentItemID", CanBeNull = false)]
         public PaymentItem PaymentItem { get; set; }
     }

@@ -15,14 +15,19 @@ using System.Windows.Forms;
 
 namespace LogInSystem
 {
+    /// <summary>
+    /// Форма управления коменданта
+    /// </summary>
     public partial class CommandantForm : Form
     {
         // log: Commandant
         // pass: CsoBoV0T
         IDbFactory _factory;
+        RepositoryFactory _repositoryFactory;
+
         InventoryService _inventoryService;
-        InventoryTypesService _inventoryTypesService;
-        InventoryStatesService _inventoryStatesService;
+        InventoryTypeService _inventoryTypesService;
+        InventoryStateService _inventoryStatesService;
 
         StudentsService _studentsService;
 
@@ -38,26 +43,26 @@ namespace LogInSystem
         StudentControl _studentControl;
         RoomControl _roomControl;
         PaymentControl _paymentControl;
-        BenefitControl _benefitControl;
         FloorsPlans _floorsPlans;
         public CommandantForm(IDbFactory factory, User user)
         {
             InitializeComponent();
             _factory = factory;
+            _repositoryFactory = new RepositoryFactory();
 
-            _inventoryService = new InventoryService(_factory);
-            _inventoryStatesService = new InventoryStatesService(_factory);
-            _inventoryTypesService = new InventoryTypesService(_factory);
+            _inventoryService = new InventoryService(_factory, _repositoryFactory);
+            _inventoryStatesService = new InventoryStateService(_factory, _repositoryFactory);
+            _inventoryTypesService = new InventoryTypeService(_factory, _repositoryFactory);
 
-            _studentsService = new StudentsService(_factory);
+            _studentsService = new StudentsService(_factory, _repositoryFactory);
 
-            _roomService = new RoomService(_factory);
+            _roomService = new RoomService(_factory, _repositoryFactory);
 
-            _paymentService = new PaymentService(_factory);
-            _paymentItemService = new PaymentItemService(_factory);
+            _paymentService = new PaymentService(_factory, _repositoryFactory);
+            _paymentItemService = new PaymentItemService(_factory, _repositoryFactory);
 
-            _benefitTypeService = new BenefitTypeService(_factory);
-            _studentBenefitService = new StudentBenefitService(_factory);
+            _benefitTypeService = new BenefitTypeService(_factory, _repositoryFactory);
+            _studentBenefitService = new StudentBenefitService(_factory, _repositoryFactory);
 
             FIO.Text = $"{user.Surname} {user.Name} {user.Middlename}";
             Role.Text = user.Type;
@@ -65,6 +70,11 @@ namespace LogInSystem
 
             this.Load += LoadTabs;
         }
+        /// <summary>
+        /// Заполнение вкладок пользовательскими элементами управления
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadTabs(object sender, EventArgs e)
         {
             _inventoryControl = new InventoryControl(_inventoryService, _inventoryTypesService, _inventoryStatesService);
@@ -72,7 +82,7 @@ namespace LogInSystem
             Inventorypanel.Controls.Clear();
             Inventorypanel.Controls.Add(_inventoryControl);
 
-            _studentControl = new StudentControl(_studentsService);
+            _studentControl = new StudentControl(_studentsService, _benefitTypeService);
             _studentControl.Dock = DockStyle.Fill;
             Studentpanel.Controls.Clear();
             Studentpanel.Controls.Add(_studentControl);
@@ -87,17 +97,16 @@ namespace LogInSystem
             Paymentpanel.Controls.Clear();
             Paymentpanel.Controls.Add(_paymentControl);
 
-            _benefitControl = new BenefitControl(_benefitTypeService);
-            _benefitControl.Dock = DockStyle.Fill;
-            Benefitpanel.Controls.Clear();
-            Benefitpanel.Controls.Add(_benefitControl);
-
             _floorsPlans = new FloorsPlans(_roomService);
             _floorsPlans.Dock = DockStyle.Fill;
             Planpanel.Controls.Clear();
             Planpanel.Controls.Add(_floorsPlans);
         }
-       
+        /// <summary>
+        /// Снятие с комнаты выбранного в пользовательском элементе управления Инвентаря предмета
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RemoveItemFromRoom_Click(object sender, EventArgs e)
         {
                 if (_inventoryControl != null)
@@ -122,7 +131,11 @@ namespace LogInSystem
                 }
                 }
         }
-
+        /// <summary>
+        /// Открытие окна для назначения выбранного в пользовательском элементе управления Инвентаря предмета на комнату
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SetItemForRoom_Click(object sender, EventArgs e)
         {
             if (_inventoryControl != null)
@@ -151,7 +164,11 @@ namespace LogInSystem
 
             }
         }
-
+        /// <summary>
+        /// Выселение с комнаты выбранного в пользовательском элементе управления Студентов студента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void EvictStudentFromRoom_Click(object sender, EventArgs e)
         {
             if (_studentControl != null)
@@ -170,7 +187,11 @@ namespace LogInSystem
 
             }
         }
-
+        /// <summary>
+        /// Открытие окна для назначения выбранного в пользовательском элементе управления Студентов студента на комнату
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SetRoomForStudent_Click(object sender, EventArgs e)
         {
             if (_studentControl != null)
@@ -199,7 +220,11 @@ namespace LogInSystem
 
             }
         }
-
+        /// <summary>
+        /// Открытие окна для добавления льготы выбранному в пользовательском элементе управления Студентов студенту
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void AddBenefit_Click(object sender, EventArgs e)
         {
             if (_studentControl != null)
@@ -228,7 +253,11 @@ namespace LogInSystem
                 }
             }
         }
-
+        /// <summary>
+        /// Удаление всех льгот выбранного в пользовательском элементе управления Студентов студента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RemoveBenefitsFromStudent_Click(object sender, EventArgs e)
         {
             if (_studentControl == null) return;
@@ -257,6 +286,11 @@ namespace LogInSystem
                 MessageBox.Show($"Ошибка при удалении: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Открытие окна для добавления оплаты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void AddPayment_Click(object sender, EventArgs e)
         {
             if (_paymentControl != null)
@@ -275,6 +309,11 @@ namespace LogInSystem
                 }
             }
         }
+        /// <summary>
+        /// Изменение выбранной в пользовательском элементе управления Оплат оплаты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ChangePayment_Click(object sender, EventArgs e)
         {
             if (_paymentControl != null)
@@ -303,7 +342,11 @@ namespace LogInSystem
                 }
             }
         }
-
+        /// <summary>
+        /// Удаление выбранной в пользовательском элементе управления Оплат оплаты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RemovePayment_Click(object sender, EventArgs e)
         {
             if (_paymentControl != null)

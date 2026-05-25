@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace LogInSystem
 {
+    /// <summary>
+    /// Пользовательский элемент управления для отображения таблицы с информацией по комнатам
+    /// 
     public partial class RoomControl : UserControl
     {
         RoomService _roomService;
@@ -29,6 +32,10 @@ namespace LogInSystem
         {
             await LoadRooms();
         }
+        /// <summary>
+        /// Загрузка данных о комнатах
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadRooms()
         {
             try
@@ -46,7 +53,11 @@ namespace LogInSystem
             }
         }
 
-       
+       /// <summary>
+       /// Изменение отображаемых данных в зависимости от заданного значения
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private async void AvailablePlaces_ValueChanged_1(object sender, EventArgs e)
         {
             try

@@ -28,6 +28,9 @@ namespace LogInSystem.HelpingForms
             base.OnLoad(e);
             LoadInitialization();
         }
+        /// <summary>
+        /// Инициализация списков студентов и предметов оплат
+        /// </summary>
         private async void LoadInitialization()
         {
             try
@@ -67,7 +70,11 @@ namespace LogInSystem.HelpingForms
                 Add.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Добавление оплаты студенту
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Add_Click(object sender, EventArgs e)
         {
             if (PaidAmount.Value > AmountDue.Value)
@@ -103,6 +110,23 @@ namespace LogInSystem.HelpingForms
                 "Ошибка базы данных",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
+            }
+        }
+        /// <summary>
+        /// Проверка будет ли иметь  дата последней оплаты значение
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LastDatePayment_ValueChanged(object sender, EventArgs e)
+        {
+            if (!LastDatePayment.Checked)
+            {
+                PaidAmount.Value = 0;
+                PaidAmount.Enabled = false;
+            }
+            else
+            {
+                PaidAmount.Enabled= true;
             }
         }
     }

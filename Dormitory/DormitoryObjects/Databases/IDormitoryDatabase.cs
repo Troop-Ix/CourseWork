@@ -15,50 +15,65 @@ namespace DormitoryObjects.Databases
     public interface IDormitoryDatabase: IDisposable
     {
         /// <summary>
-        /// Свойство для работа с таблицей "Комнаты"
+        /// Свойство для работа с сущностью "Комнаты"
         /// </summary>
         ITable<Room> Rooms { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "Студенты"
+        /// Свойство для работа с сущностью "Студенты"
         /// </summary>
         ITable<Student> Students { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "Оплаты"
+        /// Свойство для работа с сущностью "Оплаты"
         /// </summary>
         ITable<Payment> Payments { get; }
         /// <summary>
-        /// Свойство для работы с таблицей "Предметы оплаты"
+        /// Свойство для работы с сущностью "Предметы оплаты"
         /// </summary>
         ITable<PaymentItem> PaymentItems { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "Инвентарь"
+        /// Свойство для работа с сущностью "Инвентарь"
         /// </summary>
         ITable<Inventory> Inventory { get; }
         /// <summary>
-        /// Свойство для работы с таблицей "СостояниеИнвентаря"
+        /// Свойство для работы с сущностью "СостояниеИнвентаря"
         /// </summary>
-        ITable<InventoryStates> InventoryStates { get; }
+        ITable<InventoryState> InventoryStates { get; }
         /// <summary>
-        /// Свойство для работы с таблицей "ТипыИнвентаря"
+        /// Свойство для работы с сущностью "ТипыИнвентаря"
         /// </summary>
-        ITable<InventoryTypes> InventoryTypes { get; }
+        ITable<InventoryType> InventoryTypes { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "ТипыЛьгот"
+        /// Свойство для работа с сущностью "ТипыЛьгот"
         /// </summary>
         ITable<BenefitType> BenefitTypes { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "ЛьготыСтудентов"
+        /// Свойство для работа с сущностью "ЛьготыСтудентов"
         /// </summary>
         ITable<StudentBenefit> StudentBenefits { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "Пользователи"
+        /// Свойство для работа с сущностью "Пользователи"
         /// </summary>
         ITable<User> Users { get; }
         /// <summary>
-        /// Свойство для работа с таблицей "Комнаты"
+        /// Асинхронная вставка записи в таблицу
         /// </summary>
+        /// <typeparam name="T">Вид сущности, указывающий таблицу</typeparam>
+        /// <param name="entity">Новая запись</param>
+        /// <returns></returns>
         Task<int> InsertAsync<T>(T entity);
+        /// <summary>
+        /// Асинхронное обновление записи в таблице
+        /// </summary>
+        /// <typeparam name="T">Вид сущности, указывающий таблицу</typeparam>
+        /// <param name="entity">Обновленная запись</param>
+        /// <returns></returns>
         Task<int> UpdateAsync<T>(T entity);
+        /// <summary>
+        /// Асинхронное удаление записи из таблицы
+        /// </summary>
+        /// <typeparam name="T">Вид сущности, указывающий таблицу</typeparam>
+        /// <param name="entity">Удаляемая запись</param>
+        /// <returns></returns>
         Task<int> DeleteAsync<T>(T entity);
     }
 }

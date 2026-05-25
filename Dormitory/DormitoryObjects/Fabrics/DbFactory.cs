@@ -16,6 +16,7 @@ namespace DormitoryObjects.Fabrics
             _connectionString = connectionString;
             _type = type;
         }
+
         public IDormitoryDatabase Create()
         {
             switch (_type)

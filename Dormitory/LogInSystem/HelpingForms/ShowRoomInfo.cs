@@ -1,4 +1,5 @@
 ﻿using DormitoryObjects;
+using DormitoryObjects.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,16 +12,22 @@ using System.Windows.Forms;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно с информацией по выбранной комнате
+    /// </summary>
     public partial class ShowRoomInfo : Form
     {
-        Room _room;
-        public ShowRoomInfo(Room room)
+        RoomDTO _room;
+        public ShowRoomInfo(RoomDTO room)
         {
             InitializeComponent();
             _room = room;
 
             RoomInfo();
         }
+        /// <summary>
+        /// Отображение информации о комнате
+        /// </summary>
         private void RoomInfo()
         {
             this.Text = $"{this.Text} {_room.Number}";

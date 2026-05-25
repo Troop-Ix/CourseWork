@@ -5,15 +5,8 @@ namespace LogInSystem
 {
     partial class InventoryControl
     {
-        /// <summary> 
-        /// Обязательная переменная конструктора.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,26 +16,21 @@ namespace LogInSystem
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором компонентов
-
-        /// <summary> 
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
-        /// </summary>
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lnventory = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.StateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InventoryStateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -56,108 +44,120 @@ namespace LogInSystem
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MediumBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MediumBlue;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
-            this.RoomID,
-            this.NameColumn,
-            this.Condition,
+            this.RoomNumber,
+            this.TypeID,
+            this.StateID,
             this.PurchaseDate});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 91);
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(474, 503);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(880, 570);
+            this.dataGridView1.TabIndex = 5;
             // 
             // ItemID
             // 
             this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.FillWeight = 40F;
             this.ItemID.HeaderText = "ID";
             this.ItemID.Name = "ItemID";
             this.ItemID.ReadOnly = true;
             // 
-            // RoomID
+            // RoomNumber
             // 
-            this.RoomID.DataPropertyName = "RoomID";
-            this.RoomID.HeaderText = "ID комнаты";
-            this.RoomID.Name = "RoomID";
-            this.RoomID.ReadOnly = true;
-            this.RoomID.Width = 50;
+            this.RoomNumber.FillWeight = 80F;
+            this.RoomNumber.HeaderText = "№ Комнаты";
+            this.RoomNumber.Name = "RoomNumber";
+            this.RoomNumber.ReadOnly = true;
             // 
-            // NameColumn
+            // TypeID
             // 
-            this.NameColumn.DataPropertyName = "TypeID";
-            this.NameColumn.HeaderText = "Тип";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
+            this.TypeID.HeaderText = "Тип";
+            this.TypeID.Name = "TypeID";
+            this.TypeID.ReadOnly = true;
             // 
-            // Condition
+            // StateID
             // 
-            this.Condition.DataPropertyName = "StateID";
-            this.Condition.HeaderText = "Состояние";
-            this.Condition.Name = "Condition";
-            this.Condition.ReadOnly = true;
-            this.Condition.Width = 80;
+            this.StateID.HeaderText = "Состояние";
+            this.StateID.Name = "StateID";
+            this.StateID.ReadOnly = true;
             // 
             // PurchaseDate
             // 
             this.PurchaseDate.DataPropertyName = "PurchaseDate";
-            this.PurchaseDate.HeaderText = "Дата приобретения";
+            this.PurchaseDate.HeaderText = "Дата закупки";
             this.PurchaseDate.Name = "PurchaseDate";
             this.PurchaseDate.ReadOnly = true;
             // 
             // lnventory
             // 
             this.lnventory.AutoSize = true;
-            this.lnventory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lnventory.Location = new System.Drawing.Point(218, 47);
+            this.lnventory.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.lnventory.Location = new System.Drawing.Point(16, 15);
             this.lnventory.Name = "lnventory";
-            this.lnventory.Size = new System.Drawing.Size(95, 21);
-            this.lnventory.TabIndex = 1;
+            this.lnventory.Size = new System.Drawing.Size(104, 23);
+            this.lnventory.TabIndex = 4;
             this.lnventory.Text = "Инвентарь";
             // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StateID,
+            this.InventoryStateID,
             this.SName});
-            this.dataGridView2.Location = new System.Drawing.Point(586, 138);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.Location = new System.Drawing.Point(920, 50);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(245, 155);
-            this.dataGridView2.TabIndex = 2;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(320, 230);
+            this.dataGridView2.TabIndex = 3;
             // 
-            // StateID
+            // InventoryStateID
             // 
-            this.StateID.DataPropertyName = "StateID";
-            this.StateID.HeaderText = "ID";
-            this.StateID.Name = "StateID";
-            this.StateID.ReadOnly = true;
+            this.InventoryStateID.DataPropertyName = "StateID";
+            this.InventoryStateID.FillWeight = 40F;
+            this.InventoryStateID.HeaderText = "ID";
+            this.InventoryStateID.Name = "InventoryStateID";
+            this.InventoryStateID.ReadOnly = true;
             // 
             // SName
             // 
@@ -168,29 +168,45 @@ namespace LogInSystem
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(618, 94);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F);
+            this.label1.Location = new System.Drawing.Point(916, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Состояния инвентаря";
+            this.label1.Size = new System.Drawing.Size(102, 21);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Состояния:";
             // 
             // dataGridView3
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InventoryTypeID,
             this.TName});
-            this.dataGridView3.Location = new System.Drawing.Point(586, 380);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView3.EnableHeadersVisualStyles = false;
+            this.dataGridView3.Location = new System.Drawing.Point(920, 335);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(245, 184);
-            this.dataGridView3.TabIndex = 4;
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.Size = new System.Drawing.Size(320, 285);
+            this.dataGridView3.TabIndex = 1;
             // 
             // InventoryTypeID
             // 
             this.InventoryTypeID.DataPropertyName = "TypeID";
+            this.InventoryTypeID.FillWeight = 40F;
             this.InventoryTypeID.HeaderText = "ID";
             this.InventoryTypeID.Name = "InventoryTypeID";
             this.InventoryTypeID.ReadOnly = true;
@@ -204,18 +220,20 @@ namespace LogInSystem
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(637, 332);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F);
+            this.label2.Location = new System.Drawing.Point(916, 305);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Типы инвентаря";
+            this.label2.Size = new System.Drawing.Size(149, 21);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Типы предметов:";
             // 
             // InventoryControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label1);
@@ -223,7 +241,7 @@ namespace LogInSystem
             this.Controls.Add(this.lnventory);
             this.Controls.Add(this.dataGridView1);
             this.Name = "InventoryControl";
-            this.Size = new System.Drawing.Size(890, 646);
+            this.Size = new System.Drawing.Size(1260, 646);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -232,22 +250,20 @@ namespace LogInSystem
 
         }
 
-        #endregion
-
         private DataGridView dataGridView1;
         private Label lnventory;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn StateID;
-        private DataGridViewTextBoxColumn SName;
         private Label label1;
         private DataGridView dataGridView3;
-        private DataGridViewTextBoxColumn InventoryTypeID;
-        private DataGridViewTextBoxColumn TName;
         private Label label2;
         private DataGridViewTextBoxColumn ItemID;
-        private DataGridViewTextBoxColumn RoomID;
-        private DataGridViewTextBoxColumn NameColumn;
-        private DataGridViewTextBoxColumn Condition;
+        private DataGridViewTextBoxColumn RoomNumber;
+        private DataGridViewTextBoxColumn TypeID;
+        private DataGridViewTextBoxColumn StateID;
         private DataGridViewTextBoxColumn PurchaseDate;
+        private DataGridViewTextBoxColumn InventoryStateID;
+        private DataGridViewTextBoxColumn SName;
+        private DataGridViewTextBoxColumn InventoryTypeID;
+        private DataGridViewTextBoxColumn TName;
     }
 }

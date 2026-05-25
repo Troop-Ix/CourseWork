@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно с таблицей с информацией по должникам
+    /// </summary>
     public partial class ShowDebtorsForm : Form
     {
         StudentsService _studentsService;
@@ -29,6 +32,10 @@ namespace LogInSystem.HelpingForms
         {
             await LoadStudents();
         }
+        /// <summary>
+        /// Загрузка таблицы с информацией по должникам
+        /// </summary>
+        /// <returns></returns>
         public async Task LoadStudents()
         {
             try

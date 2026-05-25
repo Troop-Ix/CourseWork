@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace DormitoryObjects.Databases
 {
+    /// <summary>
+    /// Перечисление СУБД
+    /// </summary>
     public enum DatabaseType
     {
+        /// <summary>
+        /// СУБД MS SQL
+        /// </summary>
         MSDormitoryDatabase
     }
 }

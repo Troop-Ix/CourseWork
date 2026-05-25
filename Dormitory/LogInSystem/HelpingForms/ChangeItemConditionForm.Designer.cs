@@ -35,6 +35,7 @@
             // 
             // StatesList
             // 
+            this.StatesList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatesList.FormattingEnabled = true;
             this.StatesList.Location = new System.Drawing.Point(54, 88);
             this.StatesList.Name = "StatesList";

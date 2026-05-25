@@ -33,33 +33,35 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // FloorPanel
-            // 
-            this.FloorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FloorPanel.Location = new System.Drawing.Point(80, 68);
-            this.FloorPanel.Name = "FloorPanel";
-            this.FloorPanel.Size = new System.Drawing.Size(623, 280);
-            this.FloorPanel.TabIndex = 0;
-            // 
-            // FloorsList
-            // 
-            this.FloorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FloorsList.FormattingEnabled = true;
-            this.FloorsList.Location = new System.Drawing.Point(451, 30);
-            this.FloorsList.Name = "FloorsList";
-            this.FloorsList.Size = new System.Drawing.Size(121, 21);
-            this.FloorsList.TabIndex = 1;
-            this.FloorsList.SelectedIndexChanged += new System.EventHandler(this.FloorsList_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(99, 30);
+            // Располагаем надпись в верхней части с отступом слева
+            this.label1.Location = new System.Drawing.Point(380, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(333, 21);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Выберите этажа для отображения плана";
+            this.label1.Text = "Выберите этаж для отображения плана";
+            // 
+            // FloorsList
+            // 
+            this.FloorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FloorsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FloorsList.FormattingEnabled = true;
+            this.FloorsList.Location = new System.Drawing.Point(719, 23);
+            this.FloorsList.Name = "FloorsList";
+            this.FloorsList.Size = new System.Drawing.Size(121, 26);
+            this.FloorsList.TabIndex = 1;
+            this.FloorsList.SelectedIndexChanged += new System.EventHandler(this.FloorsList_SelectedIndexChanged);
+            // 
+            // FloorPanel
+            // 
+            this.FloorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FloorPanel.Location = new System.Drawing.Point(50, 70);
+            this.FloorPanel.Name = "FloorPanel";
+            this.FloorPanel.Size = new System.Drawing.Size(1116, 520);
+            this.FloorPanel.TabIndex = 0;
             // 
             // FloorsPlans
             // 
@@ -69,10 +71,9 @@
             this.Controls.Add(this.FloorsList);
             this.Controls.Add(this.FloorPanel);
             this.Name = "FloorsPlans";
-            this.Size = new System.Drawing.Size(769, 410);
+            this.Size = new System.Drawing.Size(1216, 627);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

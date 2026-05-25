@@ -13,12 +13,15 @@ using static System.Windows.Forms.AxHost;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно для измения состояния выбранного предмета
+    /// </summary>
     public partial class ChangeItemConditionForm : Form
     {
         InventoryService _inventoryService;
-        InventoryStatesService _inventoryStatesService;
+        InventoryStateService _inventoryStatesService;
         int itemID;
-        public ChangeItemConditionForm(int itemID, InventoryService inventoryService, InventoryStatesService inventoryStatesService)
+        public ChangeItemConditionForm(int itemID, InventoryService inventoryService, InventoryStateService inventoryStatesService)
         {
             InitializeComponent();
             this.itemID = itemID;
@@ -30,6 +33,9 @@ namespace LogInSystem.HelpingForms
             base.OnLoad(e);
             LoadInitialization();
         }
+        /// <summary>
+        /// Инициализация списка состояний инвентаря
+        /// </summary>
         private async void LoadInitialization()
         {
             try
@@ -54,6 +60,11 @@ namespace LogInSystem.HelpingForms
                 Change.Enabled = false;
             }
         }
+        /// <summary>
+        /// Изменение состояния предмета
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Change_Click(object sender, EventArgs e)
         {
             int state = (int)StatesList.SelectedValue;

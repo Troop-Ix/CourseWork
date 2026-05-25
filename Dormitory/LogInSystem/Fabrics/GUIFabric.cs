@@ -9,8 +9,17 @@ using System.Windows.Forms;
 
 namespace LogInSystem.Fabrics
 {
+    /// <summary>
+    /// Класс фабрики для создания окна соответствующего пользователя
+    /// </summary>
     public static class GUIFabric
     {
+        /// <summary>
+        /// Создание окна пользователя на основе данных полученного пользователя
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
         public static Form CreateUser(User user, IDbFactory factory)
         {
             switch (user.Type)

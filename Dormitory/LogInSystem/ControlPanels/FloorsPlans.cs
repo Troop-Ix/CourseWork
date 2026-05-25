@@ -1,4 +1,5 @@
 ﻿using DormitoryObjects;
+using DormitoryObjects.DTO;
 using DormitoryObjects.Services;
 using LogInSystem.Fabrics;
 using LogInSystem.HelpingForms;
@@ -16,11 +17,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LogInSystem
 {
+    /// <summary>
+    /// Пользовательский элемент управления для отображения плана комнат по этажам
+    /// </summary>
     public partial class FloorsPlans : UserControl
     {
         RoomService _roomService;
         FloorLayout _currentFloorLayout;
-        List<Room> _roomsForMap = new List<Room>();
+        List<RoomDTO> _roomsForMap = new List<RoomDTO>();
         LayoutManager _layoutManager = new LayoutManager();
         public FloorsPlans(RoomService roomService)
         {
@@ -35,6 +39,9 @@ namespace LogInSystem
             base.OnLoad(e);
             LoadInitialization();
         }
+        /// <summary>
+        /// Загрузка данных по расположению и размеру комнат из XML-файла
+        /// </summary>
         private async void LoadInitialization()
         {
             try
@@ -55,6 +62,11 @@ namespace LogInSystem
                 FloorsList.SelectedIndex = 0;
             }
         }
+        /// <summary>
+        /// Покраска комнат в зависимости от заполненности
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FloorPanel_Paint(object sender, PaintEventArgs e)
         {
             if (_currentFloorLayout == null || _currentFloorLayout.Rooms == null) return;
@@ -75,6 +87,11 @@ namespace LogInSystem
 
             }
         }
+        /// <summary>
+        /// Вызов окна с информацией по комнате, по которой был произведен двойно щелчок мыши
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FloorPanel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (_currentFloorLayout == null || _roomsForMap == null) return;
@@ -94,6 +111,11 @@ namespace LogInSystem
                 }
             }
         }
+        /// <summary>
+        /// Изменение отображения плана этажа в зависимости от выбранного этажа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void FloorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FloorsList.SelectedItem == null) return;

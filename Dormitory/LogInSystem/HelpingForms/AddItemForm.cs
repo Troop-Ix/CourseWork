@@ -12,11 +12,14 @@ using System.Windows.Forms;
 
 namespace LogInSystem.HelpingForms
 {
+    /// <summary>
+    /// Окно для добавление предмета
+    /// </summary>
     public partial class AddItemForm : Form
     {
         InventoryService _inventoryService;
-        InventoryTypesService _inventoryTypesService;
-        public AddItemForm(InventoryService inventoryService, InventoryTypesService inventoryTypesService)
+        InventoryTypeService _inventoryTypesService;
+        public AddItemForm(InventoryService inventoryService, InventoryTypeService inventoryTypesService)
         {
             InitializeComponent();
             _inventoryService = inventoryService;
@@ -27,6 +30,9 @@ namespace LogInSystem.HelpingForms
             base.OnLoad(e);
             LoadInitialization();
         }
+        /// <summary>
+        /// Инициализация списка типов инвентаря
+        /// </summary>
         private async void LoadInitialization()
         {
             try
@@ -51,6 +57,11 @@ namespace LogInSystem.HelpingForms
                 Add.Enabled = false;
             }
         }
+        /// <summary>
+        /// Добавление предмета
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Add_Click(object sender, EventArgs e)
         {
             DateTime dateOfPurchase = DateOfPurchase.Value;
@@ -59,7 +70,7 @@ namespace LogInSystem.HelpingForms
 
             try
             {
-                await _inventoryService.AddInventory(state, type, dateOfPurchase);
+                await _inventoryService.AddInventory(type, state, dateOfPurchase);
                 this.Close();
             }
             catch (Exception ex)

@@ -50,11 +50,11 @@ namespace DormitoryObjects
         /// Объект типа предмета, которым он является
         /// </summary>
         [Association(ThisKey = "TypeID", OtherKey = "TypeID", CanBeNull = false)]
-        public InventoryTypes InventoryType { get; set; }
+        public InventoryType InventoryType { get; set; }
         /// <summary>
         /// Объект состояния предмета
         /// </summary>
         [Association(ThisKey = "StateID", OtherKey = "StateID", CanBeNull = false)]
-        public InventoryStates InventoryState { get; set; }
+        public InventoryState InventoryState { get; set; }
     }
 }
